@@ -140,6 +140,7 @@ h2{font-size:clamp(40px,6vw,72px);line-height:1;}
  .hero3 h1{font-size:clamp(44px,13vw,70px)}
 }
 /* acentos dibujados: la demo de Quincy no los trae */
+.nb{white-space:nowrap}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .ac{position:relative;display:inline-block;font:inherit;line-height:1}
 .ac::after{content:"";position:absolute;pointer-events:none;background:currentColor;left:50%;bottom:.7em}
@@ -200,22 +201,27 @@ em .ac::after{transform:translateX(-50%) skewX(-12deg)}
 .track::-webkit-scrollbar{display:none}
 .track.is-drag{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
 .track::before,.track::after{content:"";flex:0 0 max(0px,calc((100vw - 1240px)/2))}
-.card{flex:0 0 clamp(280px,82vw,380px);scroll-snap-align:center;border-radius:36px;padding:34px 30px 30px;min-height:470px;display:flex;flex-direction:column;justify-content:space-between;user-select:none;-webkit-user-select:none;
- transform:translate3d(0,calc(var(--d,0)*var(--d,0)*26px),0) rotateY(calc(var(--d,0)*-14deg)) scale(calc(1 - var(--d,0)*var(--d,0)*.07));opacity:calc(1 - var(--d,0)*var(--d,0)*.35);will-change:transform;
+.card{flex:0 0 clamp(240px,68vw,380px);scroll-snap-align:center;border-radius:36px;padding:34px 30px 30px;min-height:470px;display:flex;flex-direction:column;justify-content:space-between;user-select:none;-webkit-user-select:none;
+ transform:translate3d(0,calc(var(--d,0)*var(--d,0)*26px),0) rotateY(calc(var(--d,0)*-14deg)) scale(calc(1 - var(--d,0)*var(--d,0)*.07));opacity:calc(1 - var(--d,0)*var(--d,0)*.2);will-change:transform;
  --tx:0deg;--ty:0deg}
 .card .in{transform:rotateX(var(--ty)) rotateY(var(--tx));transition:transform .5s var(--ease);height:100%;display:flex;flex-direction:column;justify-content:space-between;flex:1;gap:34px}
 .card.is-hot{--hl:1}
 .card h3{font-size:34px;line-height:1;letter-spacing:-.03em}
 .card p{margin-top:12px;color:rgba(242,241,237,.82)}
 .tiers{list-style:none;padding:0;margin:0 0 6px}
-.tiers li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:13px 0;border-top:1px solid rgba(242,241,237,.2);font-size:19px}
-.tiers b{font:500 34px/1 var(--font-display);letter-spacing:-.03em}
+.tiers li{border-top:1px solid rgba(242,241,237,.2)}
+.tiers a{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:13px 8px;margin:0 -8px;border-radius:14px;font-size:19px;text-decoration:none;transition:background .3s var(--ease)}
+.tiers a:hover,.tiers a:focus-visible{background:rgba(242,241,237,.14)}
+.tiers a:active{background:rgba(242,241,237,.22)}
+.tiers b{font:500 34px/1 "Newsreader",Georgia,serif;letter-spacing:-.03em;font-variant-numeric:lining-nums}
 .tiers b::before{content:"Bs ";font:300 17px var(--font-text);letter-spacing:0;opacity:.8}
 .price{font-family:var(--font-display);font-weight:500;font-size:60px;line-height:1;letter-spacing:-.04em}
 .price small{font-size:22px;font-weight:300;margin-right:6px;letter-spacing:-.01em;opacity:.85}
 .card .btn{width:100%;justify-content:center;margin-top:22px}
 .card.feat{background:linear-gradient(135deg,rgba(179,143,111,.32),rgba(88,16,36,.24) 60%,rgba(255,255,255,.12))}
 .tag{display:inline-block;margin-bottom:16px;padding:4px 14px;border-radius:999px;background:rgba(242,241,237,.16);font-size:14px;line-height:20px}
+@media(max-width:899px){.track{padding-inline:calc((100vw - clamp(240px,68vw,380px))/2)}.track::before,.track::after{display:none}.track{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%)}}
+@media(max-width:480px){.card h3{font-size:30px}.card{padding:30px 22px 24px}.tiers a{font-size:17px;white-space:nowrap}.tiers b{font-size:29px}.tiers b::before{font-size:15px}}
 .prog{position:relative;z-index:2;height:2px;margin:6px var(--gutter) 0;background:rgba(242,241,237,.16);border-radius:2px;overflow:hidden;max-width:1096px}
 @media(min-width:1380px){.prog{margin-left:auto;margin-right:auto}}
 .prog i{position:absolute;inset:0;background:var(--camel);transform-origin:left;transform:scaleX(var(--pr,.25))}
@@ -369,19 +375,19 @@ em .ac::after{transform:translateX(-50%) skewX(-12deg)}
   <div class="track" id="track" tabindex="0" aria-label="Servicios y precios">
     <article class="card glass" data-card>
       <div class="in"><div><h3>Pintado en gel</h3><p>Color sobre tu uña natural.</p></div>
-      <div><ul class="tiers"><li><span>Color entero</span><b>70</b></li><li><span>Diseño sencillo</span><b>80</b></li><li><span>Diseño complejo</span><b>90</b></li></ul><a class="btn cta" href="https://cal.com/lua.nails" target="_blank" rel="noopener" data-cta>Reservar</a></div></div>
+      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/pintado?duration=120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>70</b></a></li><li><a href="https://cal.com/lua.nails/pintado?duration=180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>80</b></a></li><li><a href="https://cal.com/lua.nails/pintado?duration=240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>90</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/pintado" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
     </article>
     <article class="card glass" data-card>
       <div class="in"><div><h3>Soft gel</h3><p>Uñas diseñadas para proteger mientras sanas el hábito.</p></div>
-      <div><ul class="tiers"><li><span>Color entero</span><b>100</b></li><li><span>Diseño sencillo</span><b>120</b></li><li><span>Diseño complejo</span><b>140</b></li></ul><a class="btn cta" href="https://cal.com/lua.nails" target="_blank" rel="noopener" data-cta>Reservar</a></div></div>
+      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/softgel?duration=120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>100</b></a></li><li><a href="https://cal.com/lua.nails/softgel?duration=180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>120</b></a></li><li><a href="https://cal.com/lua.nails/softgel?duration=240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>140</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/softgel" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
     </article>
     <article class="card glass" data-card>
       <div class="in"><div><h3>Reconstrucción con gel</h3><p>Reconstruimos lo que el hábito dañó.</p></div>
-      <div><ul class="tiers"><li><span>Color entero</span><b>100</b></li><li><span>Diseño sencillo</span><b>120</b></li><li><span>Diseño complejo</span><b>150</b></li></ul><a class="btn cta" href="https://cal.com/lua.nails" target="_blank" rel="noopener" data-cta>Reservar</a></div></div>
+      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/reconstruccion?duration=120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>100</b></a></li><li><a href="https://cal.com/lua.nails/reconstruccion?duration=180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>120</b></a></li><li><a href="https://cal.com/lua.nails/reconstruccion?duration=240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>150</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/reconstruccion" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
     </article>
     <article class="card glass" data-card>
       <div class="in"><div><h3>Relleno</h3><p>De soft gel o de reconstrucción.</p></div>
-      <div><ul class="tiers"><li><span>Color entero</span><b>80</b></li><li><span>Diseño sencillo</span><b>100</b></li><li><span>Diseño complejo</span><b>120</b></li></ul><a class="btn cta" href="https://cal.com/lua.nails" target="_blank" rel="noopener" data-cta>Reservar</a></div></div>
+      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion?duration=120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>80</b></a></li><li><a href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion?duration=180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>100</b></a></li><li><a href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion?duration=240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>120</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
     </article>
   </div>
   <p class="wrap hold">Precios en bolivianos. Si tu sesión incluye un retiro, reserva más tiempo.</p>
@@ -442,7 +448,7 @@ var BOOKING_URL="https://cal.com/lua.nails";
 var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return[].slice.call((r||document).querySelectorAll(s))};
 var clamp=function(v,a,b){return Math.min(b,Math.max(a,v))};
-$$("a[href]").forEach(function(a){a.href=BOOKING_URL;a.target="_blank";a.rel="noopener"});
+$$("a[data-cta]:not([data-event]),a.brand").forEach(function(a){a.href=BOOKING_URL;a.target="_blank";a.rel="noopener"});
 
 /* reveal: contenido visible por defecto, se arma antes de pintar */
 var rvs=$$(".rv");
@@ -566,14 +572,21 @@ function accents(){
     while(n=w.nextNode())if(re.test(n.nodeValue))nodes.push(n);
     nodes.forEach(function(n){
       var f=document.createDocumentFragment();
-      n.nodeValue.split(/([áéíóúÁÉÍÓÚñÑ¿¡])/).forEach(function(p){
-        if(!p)return;var m=map[p];
-        if(m&&p.length===1){var s=document.createElement("span");s.textContent=m[0];
-          if(m[1]==="inv")s.className="inv";else{if(p==="í"){s.innerHTML="";var c=document.createElement("span");c.className="cut";c.textContent="i";s.appendChild(c)}s.className="ac ac-"+m[1]+(m[2]?" ac-cap":"");s.setAttribute("aria-hidden","true")}
-          var o=document.createElement("span");o.className="sr";o.textContent=p;
-          if(m[1]==="inv"){s.setAttribute("aria-hidden","true")}
-          f.appendChild(o);f.appendChild(s)}
-        else f.appendChild(document.createTextNode(p))
+      n.nodeValue.split(/(\s+)/).forEach(function(word){
+        if(!word)return;
+        if(!re.test(word)){f.appendChild(document.createTextNode(word));return}
+        var wrap=document.createElement("span");wrap.className="nb";
+        word.split(/([áéíóúÁÉÍÓÚñÑ¿¡])/).forEach(function(p){
+          if(!p)return;var m=map[p];
+          if(m&&p.length===1){var s=document.createElement("span");s.textContent=m[0];
+            if(m[1]==="inv"){s.className="inv";s.setAttribute("aria-hidden","true")}
+            else{s.className="ac ac-"+m[1]+(m[2]?" ac-cap":"");s.setAttribute("aria-hidden","true");
+              if(p==="í"){s.textContent="";var c=document.createElement("span");c.className="cut";c.textContent="i";s.appendChild(c)}}
+            var o=document.createElement("span");o.className="sr";o.textContent=p;
+            wrap.appendChild(o);wrap.appendChild(s)}
+          else wrap.appendChild(document.createTextNode(p))
+        });
+        f.appendChild(wrap)
       });
       n.parentNode.replaceChild(f,n)
     });
