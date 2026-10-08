@@ -1,0 +1,28 @@
+:root{--brand:#581024;--ivory:#f2f1ed;--wine-soft:#86283d;--ink:#181818;--night:#150a0d;--muted:#5c544c;--hair:#ddd8d0;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--ivory);color:var(--ink);font:400 20px/32px 'Newsreader',Georgia,serif;-webkit-font-smoothing:antialiased}
+a{color:var(--brand)}
+.top{background:linear-gradient(135deg,#4a242e,#150a0d);padding:14px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+.top img{height:38px;width:auto;display:block}
+.top a.cta{color:var(--ivory);text-decoration:none;font:500 17px/1 'Newsreader',Georgia,serif;border:1px solid rgba(242,241,237,.5);padding:11px 18px;border-radius:999px;transition:background .3s,color .3s}
+.top a.cta:hover{background:var(--ivory);color:var(--brand)}
+main{max-width:720px;margin:0 auto;padding:clamp(40px,7vw,88px) 20px 40px}
+.kicker{font:600 13px/1 'Newsreader',Georgia,serif;letter-spacing:.14em;text-transform:uppercase;color:var(--wine-soft)}
+h1{font:500 clamp(38px,6vw,60px)/1.02 'Newsreader',Georgia,serif;letter-spacing:-.03em;margin:16px 0 18px;color:var(--brand)}
+.meta{font-size:16px;color:var(--muted);margin-bottom:34px}
+.lede{font-size:clamp(22px,2.6vw,26px);line-height:1.4;color:var(--ink);margin-bottom:8px}
+h2{font:500 clamp(28px,3.4vw,36px)/1.1 'Newsreader',Georgia,serif;letter-spacing:-.02em;margin:44px 0 12px;color:var(--brand)}
+p{margin-bottom:18px}
+ul{margin:0 0 18px 1.2em}li{margin-bottom:8px}
+.cta-box{margin:56px 0 0;padding:32px;border-radius:24px;background:linear-gradient(135deg,#4a242e,#150a0d);color:var(--ivory)}
+.cta-box h2{color:var(--ivory);margin-top:0}.cta-box p{color:rgba(242,241,237,.8)}
+.cta-box a.btn{display:inline-block;margin-top:6px;background:var(--ivory);color:var(--brand);text-decoration:none;font-weight:600;padding:14px 26px;border-radius:999px}
+.more{margin-top:48px;border-top:1px solid var(--hair);padding-top:8px}
+.more a{display:block;padding:14px 0;border-bottom:1px solid var(--hair);text-decoration:none;color:var(--ink);font-size:22px}
+.more a:hover{color:var(--brand)}
+.list a.item{display:block;padding:28px 0;border-bottom:1px solid var(--hair);text-decoration:none;color:var(--ink)}
+.list a.item h2{margin:10px 0 8px}
+.list a.item:hover h2{color:var(--wine-soft)}
+.list p{color:var(--muted);margin:0}
+footer{max-width:720px;margin:0 auto;padding:30px 20px 60px;font-size:16px;color:var(--muted)}

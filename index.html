@@ -277,7 +277,99 @@ em .ac::after{transform:translateX(-50%) skewX(-12deg)}
  .statement>span{color:inherit}.trail,.spot{display:none}
 }
 @media(prefers-reduced-transparency:reduce){.glass{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(43,11,20,.92)}}
+
+.blog{padding-top:0}
+.blog-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;border-top:1px solid var(--hair);padding-top:clamp(40px,6vw,72px)}
+.blog-head .all{font:500 18px/1 'Newsreader',Georgia,serif;color:var(--brand);text-decoration:underline;text-underline-offset:6px}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,36px);margin-top:clamp(24px,4vw,44px)}
+.post{display:flex;flex-direction:column;gap:12px;padding:26px 24px 24px;border:1px solid var(--hair);border-radius:20px;background:rgba(255,255,255,.45);color:var(--ink);text-decoration:none;transition:transform .5s var(--ease),border-color .3s,background .3s}
+.post:hover{transform:translateY(-4px);border-color:var(--brand);background:rgba(255,255,255,.75)}
+.post small{font:600 13px/1 'Newsreader',Georgia,serif;letter-spacing:.14em;text-transform:uppercase;color:var(--wine-soft)}
+.post h3{font:500 clamp(26px,2.4vw,32px)/1.05 var(--font-display);letter-spacing:-.025em}
+.post p{font:400 18px/27px 'Newsreader',Georgia,serif;color:var(--muted);flex:1}
+.post .more{font:500 17px/1 'Newsreader',Georgia,serif;color:var(--brand);text-decoration:underline;text-underline-offset:6px}
+@media(max-width:860px){.posts{grid-template-columns:1fr}}
+.foot-grid{grid-template-columns:1.5fr 1fr 1fr}
+.foot-grid a{color:var(--ivory);text-decoration:underline;text-underline-offset:5px}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
 </style>
+<link rel="canonical" href="https://studiolua.netlify.app/">
+<meta property="og:type" content="website"><meta property="og:locale" content="es_BO"><meta property="og:site_name" content="LÜA by Andy Villarroel">
+<meta property="og:title" content="LÜA · Uñas con onicofagia en Cochabamba"><meta property="og:description" content="Recupera la belleza de tus uñas. Estudio especializado en onicofagia en Cochabamba.">
+<meta property="og:url" content="https://studiolua.netlify.app/"><meta property="og:image" content="https://studiolua.netlify.app/assets/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "HealthAndBeautyBusiness", "@id": "https://studiolua.netlify.app/#negocio", "name": "LÜA by Andy Villarroel", "description": "Estudio de uñas especializado en onicofagia en Cochabamba, Bolivia.", "url": "https://studiolua.netlify.app/", "image": "https://studiolua.netlify.app/assets/og.jpg", "priceRange": "Bs 70 a Bs 150", "address": {"@type": "PostalAddress", "streetAddress": "Av. Papapulo, Edificio Torre Isos, Depto 7C", "addressLocality": "Cochabamba", "addressCountry": "BO"}, "founder": {"@type": "Person", "name": "Andy Villarroel"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué es la onicofagia?", "acceptedAnswer": {"@type": "Answer", "text": "Es el hábito compulsivo de morderse las uñas, muchas veces de forma inconsciente, hasta causar daño visible en las manos."}}, {"@type": "Question", "name": "¿Qué lo causa?", "acceptedAnswer": {"@type": "Answer", "text": "La onicofagia suele estar relacionada con la ansiedad, el estrés, el aburrimiento o la necesidad de calmarse en momentos de tensión emocional."}}, {"@type": "Question", "name": "¿Cómo puedo tratarlo?", "acceptedAnswer": {"@type": "Answer", "text": "Con uñas diseñadas para proteger mientras sanas el hábito. En LÜA cuidamos tus manos sin juicio."}}]}]</script>
+<script>/* LÜA tracking base: Meta Pixel + utilidades. Se usa tal cual en el blog y va inlineado en la landing. */
+(function(w,d){
+  "use strict";
+  var PIXEL_ID="1559106775456296";
+  var CAPI_ENDPOINT="/.netlify/functions/capi";
+  var CAL_HOST="cal.com";
+
+  /* --- snippet oficial de Meta --- */
+  if(!w.fbq){
+    var n=w.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!w._fbq)w._fbq=n;n.push=n;n.loaded=true;n.version="2.0";n.queue=[];
+    var t=d.createElement("script");t.async=true;t.src="https://connect.facebook.net/en_US/fbevents.js";
+    var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s);
+  }
+
+  function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,10)}
+  function ck(k){var m=d.cookie.match(new RegExp("(?:^|; )"+k+"=([^;]*)"));return m?decodeURIComponent(m[1]):""}
+  function store(k,v){try{if(v!=null)sessionStorage.setItem(k,v);return sessionStorage.getItem(k)||""}catch(e){return v||""}}
+
+  /* --- parametros de campaña y fbclid (se conserva toda la sesion) --- */
+  var qs=new URLSearchParams(location.search);
+  ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(function(k){
+    if(qs.get(k))store("lua_"+k,qs.get(k));
+  });
+  var fbclid=qs.get("fbclid");
+  if(fbclid&&!ck("_fbc")){
+    d.cookie="_fbc=fb.1."+Date.now()+"."+fbclid+";max-age=7776000;path=/;SameSite=Lax";
+  }
+
+  fbq("init",PIXEL_ID);
+  fbq("track","PageView");
+
+  /* --- envio de eventos: navegador (Pixel) + servidor (CAPI) con el mismo event_id --- */
+  function track(name,params,opts){
+    opts=opts||{};
+    var id=opts.id||uid();
+    try{fbq(opts.custom?"trackCustom":"track",name,params||{},{eventID:id})}catch(e){}
+    if(opts.server){
+      try{
+        var body=JSON.stringify({
+          event_name:name,event_id:id,event_source_url:location.href,
+          fbp:ck("_fbp"),fbc:ck("_fbc"),custom_data:params||{},
+          ad:store("lua_utm_content")
+        });
+        if(navigator.sendBeacon)navigator.sendBeacon(CAPI_ENDPOINT,new Blob([body],{type:"application/json"}));
+        else fetch(CAPI_ENDPOINT,{method:"POST",body:body,keepalive:true,headers:{"Content-Type":"application/json"}});
+      }catch(e){}
+    }
+    return id;
+  }
+
+  /* --- enlaces a Cal.com: agrega UTM, codigo de anuncio y fbp/fbc para que el webhook los lea --- */
+  function tag(href,eid){
+    try{
+      var u=new URL(href);
+      if(u.hostname.indexOf(CAL_HOST)<0)return href;
+      ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(function(k){
+        var v=store("lua_"+k);if(v&&!u.searchParams.get(k))u.searchParams.set(k,v);
+      });
+      if(!u.searchParams.get("utm_source"))u.searchParams.set("utm_source","landing");
+      var meta={eid:eid,fbp:ck("_fbp"),fbc:ck("_fbc"),ad:store("lua_utm_content"),src:location.pathname};
+      Object.keys(meta).forEach(function(k){if(meta[k])u.searchParams.set("metadata["+k+"]",meta[k])});
+      return u.toString();
+    }catch(e){return href}
+  }
+
+  w.LUA={track:track,tag:tag,uid:uid,PIXEL_ID:PIXEL_ID};
+})(window,document);
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1559106775456296&ev=PageView&noscript=1"></noscript>
 </head>
 <body>
 
@@ -413,6 +505,14 @@ em .ac::after{transform:translateX(-50%) skewX(-12deg)}
   </div>
 </section>
 
+<!-- BLOG -->
+<section class="paper pad blog" id="blog">
+  <div class="wrap">
+    <div class="blog-head"><h2 class="rv">Aprende a cuidar tus manos</h2><a class="all rv" href="/blog/">Ver todos los artículos</a></div>
+    <div class="posts"><a class="post rv" style="--d:0ms" href="/blog/onicofagia-por-que-me-como-las-unas/" data-post="onicofagia-por-que-me-como-las-unas"><small>Entender</small><h3>Por qué me como las uñas</h3><p>Lo que hay detrás de la onicofagia y por qué el hábito se repite sin que lo notes.</p><span class="more">Leer artículo</span></a><a class="post rv" style="--d:80ms" href="/blog/como-dejar-de-comerte-las-unas/" data-post="como-dejar-de-comerte-las-unas"><small>Practicar</small><h3>Cómo dejar de comerte las uñas</h3><p>Siete pasos concretos para soltar el hábito sin pelearte contigo.</p><span class="more">Leer artículo</span></a><a class="post rv" style="--d:160ms" href="/blog/primera-sesion-pintado-soft-gel-reconstruccion/" data-post="primera-sesion-pintado-soft-gel-reconstruccion"><small>Reservar</small><h3>Tu primera sesión en LÜA</h3><p>Cómo elegir entre pintado, soft gel y reconstrucción con gel.</p><span class="more">Leer artículo</span></a></div>
+  </div>
+</section>
+
 <!-- CIERRE -->
 <section class="wine grain final" id="reservar" data-spot>
   <div class="spot"></div>
@@ -439,6 +539,7 @@ em .ac::after{transform:translateX(-50%) skewX(-12deg)}
     <div class="foot-grid">
       <div><h4>Ubicación</h4><p>Av. Papapulo, Edificio Torre Isos, Depto 7C<br>Cochabamba, Bolivia</p></div>
       <div><h4>Horarios</h4><p>De 9:00 a 17:00</p></div>
+      <div><h4>Blog</h4><p><a href="/blog/">Artículos sobre onicofagia</a></p></div>
     </div>
     <p class="foot-end">© 2026 LÜA by Andy Villarroel</p>
   </div>
@@ -624,6 +725,42 @@ function req(){if(!ticking){ticking=true;requestAnimationFrame(frame)}}
 addEventListener("scroll",req,{passive:true});track.addEventListener("scroll",req,{passive:true});addEventListener("resize",req);
 if(reduce){$$(".statement span").forEach(function(w){w.style.setProperty("--w",1)})}
 frame();setTimeout(frame,400);
+})();
+
+/* ---- TRACKING DE LA LANDING (Meta Pixel + CAPI) ---- */
+(function(){
+  if(!window.LUA)return;
+  var SVC={"pintado":"Pintado en gel","softgel":"Soft gel","reconstruccion":"Reconstrucción con gel","cita-de-relleno-de-sofgel-o-reconstruccion":"Relleno"};
+  var seen={};
+  /* ViewContent al llegar a precios, una sola vez */
+  var pr=document.getElementById("precios");
+  if(pr&&"IntersectionObserver"in window){
+    var vio=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&!seen.vc){seen.vc=1;LUA.track("ViewContent",{content_name:"Precios",content_category:"Servicios"},{server:true});vio.disconnect()}
+    })},{threshold:.35});vio.observe(pr);
+  }
+  /* clic en un precio: InitiateCheckout con valor, y el enlace viaja con fbp, fbc y codigo de anuncio */
+  document.addEventListener("click",function(ev){
+    var a=ev.target.closest&&ev.target.closest("a[data-event]");
+    if(a){
+      var slug=(a.href.split("cal.com/lua.nails/")[1]||"").split("?")[0];
+      var val=parseFloat((a.querySelector("b")||{}).textContent)||0;
+      var eid=LUA.uid();
+      LUA.track("InitiateCheckout",{content_name:SVC[slug]||slug,content_category:"Servicios",content_ids:[slug],value:val,currency:"BOB"},{id:eid,server:true});
+      a.href=LUA.tag(a.href,eid);
+      return;
+    }
+    var c=ev.target.closest&&ev.target.closest("a[data-cta]:not([data-event])");
+    if(c)LUA.track("AgendaCTA",{location:(c.closest("section,nav,div.dock")||{}).id||"pagina"},{custom:true});
+    var p=ev.target.closest&&ev.target.closest("a[data-post]");
+    if(p)LUA.track("BlogClick",{post:p.getAttribute("data-post")},{custom:true});
+  },true);
+  /* profundidad de scroll */
+  var marks=[50,90];
+  addEventListener("scroll",function(){
+    var h=document.documentElement,pct=(h.scrollTop+innerHeight)/h.scrollHeight*100;
+    marks=marks.filter(function(m){if(pct>=m){LUA.track("Scroll"+m,{},{custom:true});return false}return true});
+  },{passive:true});
 })();
 </script>
 </body>

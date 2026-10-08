@@ -1,0 +1,11 @@
+{
+  "name": "lua-studio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Landing, blog y API de conversiones de LÜA by Andy Villarroel",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "dev": "netlify dev",
+    "build:site": "python3 src/build.py"
+  }
+}

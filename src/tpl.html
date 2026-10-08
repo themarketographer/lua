@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LÜA · Uñas con onicofagia en Cochabamba</title>
+<meta name="description" content="Recupera la belleza de tus uñas. Estudio especializado en onicofagia en Cochabamba, por Andy Villarroel.">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="theme-color" content="#150a0d">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Quincy CF";font-weight:300;src:url(@f_light@) format("opentype")}
+@font-face{font-family:"Quincy CF";font-weight:400;src:url(@f_reg@) format("opentype")}
+@font-face{font-family:"Quincy CF";font-weight:500;src:url(@f_med@) format("opentype")}
+@font-face{font-family:"Quincy CF";font-weight:700;src:url(@f_bold@) format("opentype")}
+@font-face{font-family:"Quincy CF";font-style:italic;font-weight:400;src:url(@f_ital@) format("opentype")}
+@font-face{font-family:"Quincy CF Text";font-weight:400;src:url(@f_text@) format("opentype")}
+:root{
+ --brand:#581024;--ivory:#f2f1ed;--wine-deep:#2b0b14;--wine-soft:#86283d;--wine-tint:#ecd9dc;--camel:#b38f6f;--ink:#181818;--night:#150a0d;
+ --muted:#5c544c;--hair:#ddd8d0;
+ --font-display:"Quincy CF","Newsreader",Georgia,serif;--font-text:"Quincy CF Text","Newsreader",Georgia,serif;
+ --ease:cubic-bezier(.16,1,.3,1);--gutter:clamp(20px,5vw,72px);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scrollbar-color:#8f7f80 transparent;-webkit-text-size-adjust:100%}
+body{background:var(--night);color:var(--ivory);font-family:var(--font-text);font-size:18px;line-height:26px;letter-spacing:-.01em;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--brand);color:var(--ivory)}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;letter-spacing:-.03em;text-wrap:balance}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gutter)}
+:focus-visible{outline:2px solid var(--camel);outline-offset:3px}
+@property --cut{syntax:"<percentage>";inherits:false;initial-value:0%}
+
+/* ============ EYES (los dos puntos de la Ü) ============ */
+.eyes{--s:14px;--ex:0px;--ey:0px;--c:var(--ivory);display:inline-flex;gap:calc(var(--s)*1.15);vertical-align:middle}
+.eye{width:var(--s);height:var(--s);border-radius:50%;background:var(--c);transform-origin:50% 60%;
+ transform:translate(var(--ex),var(--ey));
+ transition:transform .24s var(--ease),--cut .55s var(--ease);
+ -webkit-mask-image:radial-gradient(circle at 50% 118%,transparent var(--cut),#000 calc(var(--cut) + .6%));mask-image:radial-gradient(circle at 50% 118%,transparent var(--cut),#000 calc(var(--cut) + .6%));
+ animation:eye-open 1s var(--ease) backwards}
+@keyframes eye-open{from{transform:translate(var(--ex),var(--ey)) scaleY(.05)}}
+.eyes.is-blink .eye{transform:translate(var(--ex),var(--ey)) scaleY(.08)}
+.eyes.is-wink .eye:last-child{animation:wink .46s var(--ease)}
+@keyframes wink{0%{transform:translate(var(--ex),var(--ey)) scale(1)}30%{transform:translate(var(--ex),calc(var(--ey) + 1px)) scale(1.18,.06)}62%{transform:translate(var(--ex),calc(var(--ey) + 1px)) scale(1.18,.06)}100%{transform:translate(var(--ex),var(--ey)) scale(1)}}
+body.is-smile .eye,.eyes.force-smile .eye{--cut:58%;transform:translate(var(--ex),calc(var(--ey) - .12*var(--s))) scale(1.12,.9)}
+body.is-smile .eyes.is-blink .eye{transform:translate(var(--ex),var(--ey)) scale(1.12,.9)}
+
+/* ============ NAV (cristal líquido) ============ */
+.glass{position:relative;isolation:isolate;
+ background:linear-gradient(135deg,rgba(255,255,255,.17),rgba(255,255,255,.04) 55%,rgba(255,255,255,.11));
+ -webkit-backdrop-filter:blur(22px) saturate(190%) brightness(1.08);backdrop-filter:blur(22px) saturate(190%) brightness(1.08);
+ border:1px solid rgba(255,255,255,.2);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(0,0,0,.25),inset 0 0 28px rgba(255,255,255,.05),0 18px 50px -12px rgba(8,2,4,.6)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;pointer-events:none;
+ background:radial-gradient(260px circle at var(--mx,30%) var(--my,0%),rgba(255,255,255,.34),transparent 62%);opacity:var(--hl,.55);transition:opacity .4s}
+nav.top,.dock{--hl:.22}
+nav.top{background:linear-gradient(135deg,rgba(74,36,46,.8),rgba(21,10,13,.82));color:var(--ivory);position:fixed;z-index:50;top:max(14px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:min(760px,calc(100% - 28px));
+ display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 8px 8px 22px;border-radius:999px;transition:transform .6s var(--ease),opacity .4s}
+nav.top.is-hidden{transform:translate(-50%,-140%)}
+.brand{display:inline-flex;align-items:center;line-height:0;text-decoration:none}
+.brand img{height:44px;width:auto}
+.btn{white-space:nowrap}
+.nav-meta{display:none;text-align:right;font:400 15px/1.25 var(--font-text);color:rgba(242,241,237,.85)}
+.nav-meta b{display:block;font:500 17px/1.1 var(--font-display);color:var(--ivory);letter-spacing:-.01em}
+@media(max-width:899px){nav.top{justify-content:space-between;padding:8px 22px}nav.top .cta{display:none}.nav-meta{display:block}}
+.dock{position:fixed;z-index:50;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:18px;padding:8px 8px 8px 24px;border-radius:999px;background:linear-gradient(135deg,rgba(74,36,46,.8),rgba(21,10,13,.82));color:var(--ivory)}
+.dock-u{position:relative;display:inline-block;font:500 34px/1 var(--font-display);letter-spacing:-.02em;padding-top:8px}
+.dock-u .eyes{--s:6px;gap:7px;position:absolute;left:50%;top:5px;transform:translateX(-50%)}
+@media(min-width:900px){.dock{display:none}}
+
+/* ============ BOTONES ============ */
+.btn{--sweep:var(--camel);position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 30px;border:2px solid var(--ivory);border-radius:999px;background:var(--ivory);color:var(--brand);
+ font:700 17px/20px var(--font-display);letter-spacing:-.01em;text-decoration:none;cursor:pointer;transition:color .32s var(--ease),transform .18s var(--ease),border-color .32s}
+.btn::before{content:"";position:absolute;inset:-2px;z-index:-1;background:var(--sweep);transform:translateX(-102%);transition:transform .55s var(--ease)}
+.btn:hover::before,.btn:focus-visible::before{transform:none}
+.btn:hover{color:#181818;border-color:var(--camel)}
+.btn:active{transform:scale(.97)}
+.btn--sm{min-height:44px;padding:0 22px;font-size:16px}
+.btn--brand{background:var(--brand);color:var(--ivory);border-color:var(--brand)}
+.btn--brand:hover{color:#181818}
+.btn--ghost{background:transparent;color:var(--ivory);border-color:rgba(242,241,237,.45);--sweep:var(--ivory)}
+.btn--ghost:hover{color:var(--brand);border-color:var(--ivory)}
+.btn .eyes{--s:6px;--c:currentColor;transition:transform .4s var(--ease)}
+.btn .eye{animation:none}
+.btn:hover .eyes{transform:translateY(-1px) scale(1.15)}
+
+/* ============ SECCIONES ============ */
+section{position:relative;overflow:hidden;isolation:isolate}
+.grain::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.08;mix-blend-mode:overlay;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.ink{background:radial-gradient(900px 600px at 82% 8%,rgba(134,40,61,.38),transparent 62%),radial-gradient(700px 520px at 6% 92%,rgba(88,16,36,.55),transparent 65%),var(--night)}
+.paper{background:radial-gradient(800px 500px at 90% 0%,rgba(179,143,111,.22),transparent 60%),radial-gradient(700px 500px at 0% 100%,rgba(88,16,36,.1),transparent 60%),var(--ivory);color:var(--ink)}
+.wine{background:linear-gradient(160deg,#6a1730 0%,var(--brand) 46%,var(--wine-deep) 100%)}
+.pad{padding:clamp(88px,13vw,176px) 0}
+.orb{position:absolute;pointer-events:none;border-radius:50%;z-index:-1;will-change:transform}
+.ring{position:absolute;pointer-events:none;border-radius:50%;border:1.5px solid currentColor;z-index:-1;will-change:transform}
+@media(max-width:700px){.ring{display:none}}
+h2{font-size:clamp(40px,6vw,72px);line-height:1;}
+.lead{font-family:var(--font-display);font-weight:300;font-size:clamp(22px,2.6vw,28px);line-height:1.22;letter-spacing:-.02em}
+
+/* reveal por scroll (visible por defecto, se arma en JS) */
+.rv.is-armed{opacity:0;filter:blur(8px);transform:translateY(28px);transition:opacity .9s var(--ease) var(--d,0ms),transform .9s var(--ease) var(--d,0ms),filter .9s var(--ease) var(--d,0ms)}
+.rv.is-armed.is-seen{opacity:1;filter:none;transform:none}
+
+/* ============ HERO ============ */
+.hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,5vw,80px);align-items:center;width:100%}
+.hero h1{font-size:clamp(46px,8.6vw,118px);line-height:.92;letter-spacing:-.035em}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--camel)}
+.hero .lead{margin:28px 0 38px;max-width:30ch;color:rgba(242,241,237,.82)}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px}
+.arch{position:relative;aspect-ratio:4/5;border-radius:50% 50% 40px 40px / 37.5% 37.5% 40px 40px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06)}
+.arch img{width:100%;height:112%;object-fit:cover;will-change:transform}
+.arch::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(21,10,13,.65),rgba(88,16,36,.12) 45%,transparent 70%)}
+.arch-wrap{position:relative}
+.hero-eyes{position:absolute;z-index:3;left:50%;top:var(--hy,30%);--s:clamp(11px,1.5vw,18px);transform:translateX(-50%);filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.spot{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(360px circle at var(--sx,70%) var(--sy,30%),rgba(179,143,111,.16),transparent 65%);transition:opacity .6s;opacity:var(--so,0)}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.arch-wrap{max-width:420px;margin:0 auto;width:100%}}
+
+/* hero 3D */
+.hero3{min-height:100svh;display:flex;align-items:center;padding:130px 0 110px}
+.hero3 .hero3-in{position:relative;z-index:3;width:100%}
+.hero3 .copy{max-width:640px;transform:translate3d(0,var(--cy,0px),0);will-change:transform}
+.hero3 h1{font-size:clamp(46px,7.6vw,112px);line-height:.92;letter-spacing:-.035em}
+.hero3 h1 em{font-style:italic;font-weight:400;color:var(--camel)}
+.hero3 .lead{margin:28px 0 38px;max-width:30ch;color:rgba(242,241,237,.86)}
+.hero3-eyes{--s:clamp(14px,1.8vw,22px);margin-bottom:clamp(18px,2.4vw,30px);display:flex}
+.stage{position:absolute;inset:0;z-index:1;perspective:1100px;perspective-origin:70% 40%;pointer-events:none;overflow:hidden}
+.statue{position:absolute;top:0;right:0;bottom:0;width:min(62vw,880px);transform-style:preserve-3d;transform-origin:60% 50%;
+ transform:translate3d(var(--tx,0px),var(--ty,0px),0) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.1);will-change:transform;
+ -webkit-mask-image:linear-gradient(to left,#000 55%,transparent 100%);mask-image:linear-gradient(to left,#000 55%,transparent 100%)}
+.statue img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:contrast(1.05) saturate(1.1)}
+.statue::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(21,10,13,.85),transparent 45%),linear-gradient(120deg,rgba(88,16,36,.35),transparent 55%)}
+@media(max-width:860px){
+ .hero3{align-items:flex-end;padding:120px 0 110px}
+ .statue{left:0;width:100%;-webkit-mask-image:linear-gradient(to bottom,#000 40%,transparent 92%);mask-image:linear-gradient(to bottom,#000 40%,transparent 92%)}
+ .statue img{object-position:50% 12%}
+ .statue::after{background:linear-gradient(to top,rgba(21,10,13,.92) 8%,rgba(21,10,13,.35) 55%,transparent 80%)}
+ .hero3 h1{font-size:clamp(44px,13vw,70px)}
+}
+/* acentos dibujados: la demo de Quincy no los trae */
+.nb{white-space:nowrap}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.ac{position:relative;display:inline-block;font:inherit;line-height:1}
+.ac::after{content:"";position:absolute;pointer-events:none;background:currentColor;left:50%;bottom:.7em}
+.ac-t::after{width:.5em;height:.17em;bottom:.7em;transform:translateX(-50%);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 17'%3E%3Cpath d='M3 12C10 2 17 2 25 8.5S40 15 47 5' fill='none' stroke='black' stroke-width='3.6' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 17'%3E%3Cpath d='M3 12C10 2 17 2 25 8.5S40 15 47 5' fill='none' stroke='black' stroke-width='3.6' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.ac-a::after{width:.13em;height:.26em;left:54%;transform:translateX(-50%);clip-path:polygon(38% 0,100% 0,52% 100%,14% 100%)}
+.ac .cut{display:inline-block;line-height:1;clip-path:inset(.345em 0 0 0)}
+.ac-cap::after{bottom:.88em}
+em .ac::after{transform:translateX(-50%) skewX(-12deg)}
+.inv{display:inline-block;transform:rotate(180deg) translateY(.07em);}
+/* ============ DOLOR ============ */
+.pain-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,96px);align-items:center}
+.bowl{position:relative;aspect-ratio:1/1.08;border-radius:40px 40px 50% 50% / 40px 40px 37.5% 37.5%;overflow:hidden;box-shadow:0 30px 70px -28px rgba(88,16,36,.5)}
+.bowl img{width:100%;height:100%;object-fit:cover}
+.pains{list-style:none;padding:0;margin:44px 0 0;display:grid;gap:0}
+.pains li{display:flex;gap:16px;align-items:flex-start;padding:22px 0;border-top:1px solid var(--hair);font-size:20px;line-height:28px;}
+.pains li:last-child{border-bottom:1px solid var(--hair)}
+.pains svg{flex:none;margin-top:5px;color:var(--brand);transition:transform .4s var(--ease)}
+.pains li:hover svg{transform:rotate(90deg)}
+.closer{margin-top:40px;font-family:var(--font-display);font-weight:300;font-size:clamp(26px,3vw,34px);line-height:1.15;letter-spacing:-.02em;color:var(--brand)}
+@media(max-width:860px){.pain-grid{grid-template-columns:1fr}.bowl{max-width:480px}}
+
+.in.is-armed{opacity:0;transform:translate3d(calc(var(--dir,1)*36px),0,0);transition:opacity .6s var(--ease) var(--d,0ms),transform .8s var(--ease) var(--d,0ms)}
+.in.is-armed.is-seen{opacity:1;transform:none}
+.bowl.in.is-armed{opacity:1;transform:none}
+.bowl.in.is-armed img{clip-path:inset(28% 0 0 0);transform:scale(1.14);transition:clip-path .9s var(--ease),transform 1.2s var(--ease)}
+.bowl.in.is-armed.is-seen img{clip-path:inset(0);transform:none}
+/* ============ MANIFIESTO (texto que se enciende con el dedo) ============ */
+.manifest{padding:clamp(110px,16vw,220px) 0}
+.statement{font-family:var(--font-display);font-weight:500;font-size:clamp(36px,6.4vw,92px);line-height:1;letter-spacing:-.035em;max-width:16ch}
+.statement>span{display:inline-block;margin-right:.22em;color:var(--ivory);opacity:calc(.16 + var(--w,0)*.84)}
+.statement>span.hl{color:var(--camel);opacity:calc(.2 + var(--w,0)*.8);font-style:italic;font-weight:400}
+
+/* ============ OFICIO ============ */
+.craft-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,56px);align-items:end;margin-top:72px}
+.craft-grid .col2{margin-top:120px}
+.tile{position:relative;aspect-ratio:4/5;border-radius:40px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.7)}
+.tile.arc{border-radius:50% 50% 40px 40px / 37.5% 37.5% 40px 40px}
+.tile img{width:100%;height:114%;object-fit:cover;will-change:transform}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(21,10,13,.7),transparent 55%)}
+.tile figcaption{position:absolute;z-index:2;left:22px;bottom:22px;padding:10px 22px;border-radius:999px;font:500 clamp(19px,2vw,24px)/1.1 var(--font-display);letter-spacing:-.02em;background:rgba(21,10,13,.5);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.sub{max-width:52ch;margin-top:28px;font-size:clamp(19px,2vw,22px);line-height:1.45;color:rgba(242,241,237,.86)}
+@media(max-width:700px){.craft-grid{grid-template-columns:1fr;gap:16px;margin-top:40px}.craft-grid .col2{margin-top:0}.craft-grid .tile{aspect-ratio:16/10;border-radius:28px}.craft-grid .tile.arc{border-radius:50% 50% 28px 28px / 60% 60% 28px 28px}}
+
+/* ============ RESULTADOS ============ */
+.res{display:flex;gap:clamp(14px,2.4vw,32px);overflow-x:auto;scroll-snap-type:x mandatory;padding:56px var(--gutter) 24px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.res::-webkit-scrollbar{display:none}
+.res .tile{flex:0 0 clamp(290px,84vw,560px);aspect-ratio:4/5;scroll-snap-align:center}
+.res .tile:nth-child(2){margin-top:48px}
+.res .tile:nth-child(3){margin-top:0}
+.res .tile img{height:100%;transform:scale(1.02);transition:transform 1.4s var(--ease)}.res .tile:hover img{transform:scale(1.06)}
+@media(min-width:1000px){.res .tile{flex-basis:min(36vw,500px)}}
+@media(max-width:700px){.res .tile:nth-child(2){margin-top:28px}}
+
+/* ============ PRECIOS ============ */
+.pricing{scroll-margin-top:24px;padding:clamp(88px,12vw,160px) 0 clamp(96px,12vw,170px);background:var(--night)}
+.pricing .bg{position:absolute;inset:-6% -4%;z-index:0;background:url(@i_rose@) center/cover;filter:saturate(1.25) brightness(.75);will-change:transform}
+.pricing .shade{position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,var(--night) 0%,rgba(21,10,13,.55) 22%,rgba(43,11,20,.7) 78%,var(--night) 100%)}
+.pricing .head{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.arrows{display:flex;gap:10px}
+.arrow{width:56px;height:56px;border-radius:50%;border:1px solid rgba(255,255,255,.22);display:grid;place-items:center;color:var(--ivory);cursor:pointer;font:inherit;transition:transform .2s var(--ease),opacity .2s}
+.arrow:active{transform:scale(.92)}.arrow[disabled]{opacity:.35}
+.track{position:relative;z-index:2;display:flex;gap:clamp(16px,2.4vw,28px);overflow-x:auto;scroll-snap-type:x mandatory;padding:56px var(--gutter) 40px;margin-top:8px;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;cursor:grab;perspective:1200px}
+.track::-webkit-scrollbar{display:none}
+.track.is-drag{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
+.track::before,.track::after{content:"";flex:0 0 max(0px,calc((100vw - 1240px)/2))}
+.card{flex:0 0 clamp(240px,68vw,380px);scroll-snap-align:center;border-radius:36px;padding:34px 30px 30px;min-height:470px;display:flex;flex-direction:column;justify-content:space-between;user-select:none;-webkit-user-select:none;
+ transform:translate3d(0,calc(var(--d,0)*var(--d,0)*26px),0) rotateY(calc(var(--d,0)*-14deg)) scale(calc(1 - var(--d,0)*var(--d,0)*.07));opacity:calc(1 - var(--d,0)*var(--d,0)*.2);will-change:transform;
+ --tx:0deg;--ty:0deg}
+.card .in{transform:rotateX(var(--ty)) rotateY(var(--tx));transition:transform .5s var(--ease);height:100%;display:flex;flex-direction:column;justify-content:space-between;flex:1;gap:34px}
+.card.is-hot{--hl:1}
+.card h3{font-size:34px;line-height:1;letter-spacing:-.03em}
+.card p{margin-top:12px;color:rgba(242,241,237,.82)}
+.tiers{list-style:none;padding:0;margin:0 0 6px}
+.tiers li{border-top:1px solid rgba(242,241,237,.2)}
+.tiers a{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:13px 8px;margin:0 -8px;border-radius:14px;font-size:19px;text-decoration:none;transition:background .3s var(--ease)}
+.tiers a:hover,.tiers a:focus-visible{background:rgba(242,241,237,.14)}
+.tiers a:active{background:rgba(242,241,237,.22)}
+.tiers b{font:500 34px/1 "Newsreader",Georgia,serif;letter-spacing:-.03em;font-variant-numeric:lining-nums}
+.tiers b::before{content:"Bs ";font:300 17px var(--font-text);letter-spacing:0;opacity:.8}
+.price{font-family:var(--font-display);font-weight:500;font-size:60px;line-height:1;letter-spacing:-.04em}
+.price small{font-size:22px;font-weight:300;margin-right:6px;letter-spacing:-.01em;opacity:.85}
+.card .btn{width:100%;justify-content:center;margin-top:22px}
+.card.feat{background:linear-gradient(135deg,rgba(179,143,111,.32),rgba(88,16,36,.24) 60%,rgba(255,255,255,.12))}
+.tag{display:inline-block;margin-bottom:16px;padding:4px 14px;border-radius:999px;background:rgba(242,241,237,.16);font-size:14px;line-height:20px}
+@media(max-width:899px){.track{padding-inline:calc((100vw - clamp(240px,68vw,380px))/2)}.track::before,.track::after{display:none}.track{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%)}}
+@media(max-width:480px){.card h3{font-size:30px}.card{padding:30px 22px 24px}.tiers a{font-size:17px;white-space:nowrap}.tiers b{font-size:29px}.tiers b::before{font-size:15px}}
+.prog{position:relative;z-index:2;height:2px;margin:6px var(--gutter) 0;background:rgba(242,241,237,.16);border-radius:2px;overflow:hidden;max-width:1096px}
+@media(min-width:1380px){.prog{margin-left:auto;margin-right:auto}}
+.prog i{position:absolute;inset:0;background:var(--camel);transform-origin:left;transform:scaleX(var(--pr,.25))}
+.hold{margin-top:28px;font-size:17px;position:relative;z-index:2;margin-top:18px;color:rgba(242,241,237,.7);font-size:15px}
+
+.hero2{min-height:100svh;display:flex;align-items:center;padding-top:clamp(120px,14vw,170px)}
+.hero2 .wrap{width:100%}
+.hero2 h1{font-size:clamp(46px,9vw,128px);line-height:.92;letter-spacing:-.04em;margin:0 auto;max-width:11ch}
+/* ============ FAQ ============ */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,6vw,96px);align-items:start}
+.faq details{border-top:1px solid var(--hair)}.faq details:last-child{border-bottom:1px solid var(--hair)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;font:500 clamp(22px,2.6vw,30px)/1.1 var(--font-display);letter-spacing:-.025em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:18px;height:18px;background:linear-gradient(var(--brand),var(--brand)) center/100% 2px no-repeat,linear-gradient(var(--brand),var(--brand)) center/2px 100% no-repeat;transition:transform .5s var(--ease)}
+.faq details[open] summary::after{transform:rotate(135deg)}
+.faq details p{padding:0 40px 28px 0;font-size:20px;line-height:30px;color:var(--muted);animation:faq-in .6s var(--ease)}
+@keyframes faq-in{from{opacity:0;transform:translateY(-8px)}}
+@media(max-width:860px){.faq-grid{grid-template-columns:1fr}}
+/* ============ CIERRE ============ */
+.final{padding:clamp(110px,15vw,210px) 0;text-align:center}
+.final h1,.final h2{font-size:clamp(46px,9vw,128px);line-height:.92;letter-spacing:-.04em;margin:0 auto;max-width:11ch}
+.final h1 em,.final h2 em{font-style:italic;font-weight:400;color:var(--camel)}
+.final .big{--s:clamp(22px,4.6vw,46px);margin:0 0 clamp(20px,3vw,34px);display:flex;justify-content:center}
+.final .lead{margin:26px auto 40px;max-width:28ch;color:rgba(242,241,237,.82)}
+.final .cta-row{justify-content:center}
+.final .photo{position:absolute;inset:0;z-index:0;opacity:.2;mix-blend-mode:luminosity}
+.final .photo img{width:100%;height:116%;object-fit:cover}
+.foot{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--wine-deep),var(--night));padding:clamp(64px,9vw,110px) 0 calc(36px + env(safe-area-inset-bottom));color:rgba(242,241,237,.8);border-top:1px solid rgba(255,255,255,.08)}
+.foot .wrap{position:relative;z-index:2}
+.foot-top{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;padding-bottom:clamp(32px,5vw,56px);border-bottom:1px solid rgba(242,241,237,.16)}
+.foot-logo{width:clamp(180px,24vw,300px);height:auto}
+.foot-tag{font:italic 400 clamp(26px,3.4vw,40px)/1.05 var(--font-display);letter-spacing:-.02em;color:var(--camel);max-width:12ch}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:32px;padding:clamp(32px,5vw,56px) 0}
+.foot h4{font:500 22px/1 var(--font-display);letter-spacing:-.02em;color:var(--ivory);margin-bottom:14px}
+.foot p{font-size:18px;line-height:28px}
+.foot a{text-decoration:none;border-bottom:1px solid rgba(242,241,237,.3);transition:border-color .2s,color .2s}.foot a:hover{color:var(--camel);border-color:var(--camel)}
+.foot-grid a,.foot-grid p{font-family:'Newsreader',Georgia,serif}
+.foot-end{padding-bottom:70px;font-size:16px;opacity:.6;padding-top:20px;border-top:1px solid rgba(242,241,237,.1)}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
+
+/* estela del dedo */
+.trail{position:fixed;left:0;top:0;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;pointer-events:none;z-index:40;opacity:0;background:radial-gradient(circle,rgba(179,143,111,.32),rgba(134,40,61,.14) 45%,transparent 70%);mix-blend-mode:screen;transition:opacity .5s}
+
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+ .rv.is-armed{opacity:1;filter:none;transform:none}
+ .statement>span{color:inherit}.trail,.spot{display:none}
+}
+@media(prefers-reduced-transparency:reduce){.glass{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(43,11,20,.92)}}
+
+.blog{padding-top:0}
+.blog-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;border-top:1px solid var(--hair);padding-top:clamp(40px,6vw,72px)}
+.blog-head .all{font:500 18px/1 'Newsreader',Georgia,serif;color:var(--brand);text-decoration:underline;text-underline-offset:6px}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,36px);margin-top:clamp(24px,4vw,44px)}
+.post{display:flex;flex-direction:column;gap:12px;padding:26px 24px 24px;border:1px solid var(--hair);border-radius:20px;background:rgba(255,255,255,.45);color:var(--ink);text-decoration:none;transition:transform .5s var(--ease),border-color .3s,background .3s}
+.post:hover{transform:translateY(-4px);border-color:var(--brand);background:rgba(255,255,255,.75)}
+.post small{font:600 13px/1 'Newsreader',Georgia,serif;letter-spacing:.14em;text-transform:uppercase;color:var(--wine-soft)}
+.post h3{font:500 clamp(26px,2.4vw,32px)/1.05 var(--font-display);letter-spacing:-.025em}
+.post p{font:400 18px/27px 'Newsreader',Georgia,serif;color:var(--muted);flex:1}
+.post .more{font:500 17px/1 'Newsreader',Georgia,serif;color:var(--brand);text-decoration:underline;text-underline-offset:6px}
+@media(max-width:860px){.posts{grid-template-columns:1fr}}
+.foot-grid{grid-template-columns:1.5fr 1fr 1fr}
+.foot-grid a{color:var(--ivory);text-decoration:underline;text-underline-offset:5px}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
+</style>
+<link rel="canonical" href="https://studiolua.netlify.app/">
+<meta property="og:type" content="website"><meta property="og:locale" content="es_BO"><meta property="og:site_name" content="LÜA by Andy Villarroel">
+<meta property="og:title" content="LÜA · Uñas con onicofagia en Cochabamba"><meta property="og:description" content="Recupera la belleza de tus uñas. Estudio especializado en onicofagia en Cochabamba.">
+<meta property="og:url" content="https://studiolua.netlify.app/"><meta property="og:image" content="https://studiolua.netlify.app/assets/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "HealthAndBeautyBusiness", "@id": "https://studiolua.netlify.app/#negocio", "name": "LÜA by Andy Villarroel", "description": "Estudio de uñas especializado en onicofagia en Cochabamba, Bolivia.", "url": "https://studiolua.netlify.app/", "image": "https://studiolua.netlify.app/assets/og.jpg", "priceRange": "Bs 70 a Bs 150", "address": {"@type": "PostalAddress", "streetAddress": "Av. Papapulo, Edificio Torre Isos, Depto 7C", "addressLocality": "Cochabamba", "addressCountry": "BO"}, "founder": {"@type": "Person", "name": "Andy Villarroel"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué es la onicofagia?", "acceptedAnswer": {"@type": "Answer", "text": "Es el hábito compulsivo de morderse las uñas, muchas veces de forma inconsciente, hasta causar daño visible en las manos."}}, {"@type": "Question", "name": "¿Qué lo causa?", "acceptedAnswer": {"@type": "Answer", "text": "La onicofagia suele estar relacionada con la ansiedad, el estrés, el aburrimiento o la necesidad de calmarse en momentos de tensión emocional."}}, {"@type": "Question", "name": "¿Cómo puedo tratarlo?", "acceptedAnswer": {"@type": "Answer", "text": "Con uñas diseñadas para proteger mientras sanas el hábito. En LÜA cuidamos tus manos sin juicio."}}]}]</script>
+<script>@pixel_js@</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1559106775456296&ev=PageView&noscript=1"></noscript>
+</head>
+<body>
+
+<nav class="top glass" id="nav">
+  <a class="brand" href="#top" aria-label="LÜA by Andy Villarroel"><img src="@i_logo_nav@" alt="LÜA by Andy Villarroel" width="120" height="54"></a>
+  <a class="btn btn--sm cta" href="#precios" data-cta>Agenda tu sesión</a>
+  <span class="nav-meta"><b>Cochabamba</b>9:00 a 17:00</span>
+</nav>
+<div class="dock glass" id="dock">
+  <span class="dock-u" aria-hidden="true">U<span class="eyes" data-eyes><i class="eye"></i><i class="eye"></i></span></span>
+  <a class="btn btn--sm cta" href="#precios" data-cta>Agenda tu sesión</a>
+</div>
+
+<main id="top">
+<!-- HERO -->
+<section class="ink grain hero3" data-spot id="hero">
+  <div class="spot"></div>
+  <div class="stage" aria-hidden="true">
+    <div class="statue"><img src="@i_statue@" alt="" width="1000" height="1250"></div>
+  </div>
+  <i class="orb" data-par="-.12" style="width:560px;height:560px;right:-160px;top:-120px;background:radial-gradient(circle at 35% 30%,#86283d,transparent 70%);opacity:.45"></i>
+  <i class="ring" data-par=".1" style="width:220px;height:220px;left:-60px;bottom:8%;color:rgba(179,143,111,.4)"></i>
+  <div class="wrap hero3-in">
+    <div class="copy">
+      <span class="eyes hero3-eyes" data-eyes data-track aria-hidden="true"><i class="eye"></i><i class="eye"></i></span>
+      <h1 class="rv">Recupera la belleza de tus <em>uñas</em></h1>
+      <p class="lead rv" style="--d:140ms">Deja de ocultar tus manos, empieza a construir seguridad con tus manos.</p>
+      <div class="cta-row rv" style="--d:260ms">
+        <a class="btn cta" href="#precios" data-cta>Agenda tu sesión <span class="eyes" aria-hidden="true"><i class="eye"></i><i class="eye"></i></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="paper pad" id="problema">
+  <i class="orb" data-par=".08" style="width:420px;height:420px;left:-140px;top:10%;background:radial-gradient(circle at 35% 30%,rgba(88,16,36,.2),transparent 70%)"></i>
+  <div class="wrap pain-grid">
+    <div class="bowl in"><img src="@i_bitten@" alt="Manos con las uñas mordidas sobre fondo oscuro" decoding="async" width="1000" height="1080"></div>
+    <div>
+      <h2 class="rv">¿Te has sentido así?</h2>
+      <ul class="pains">
+        <li class="in" style="--dir:1;--d:0ms"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l14 14M18 4L4 18"/></svg>Ocultando tus manos porque no te gustan tus uñas</li>
+        <li class="in" style="--dir:-1;--d:110ms"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l14 14M18 4L4 18"/></svg>Evitando preguntas sobre tus uñas</li>
+        <li class="in" style="--dir:1;--d:220ms"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l14 14M18 4L4 18"/></svg>Pensando que no hay solución</li>
+      </ul>
+      <p class="closer rv">Nos encargamos de que tus uñas te den seguridad.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFIESTO -->
+<section class="ink grain manifest" data-spot>
+  <div class="spot"></div>
+  <i class="orb" data-par="-.1" style="width:640px;height:640px;left:-220px;bottom:-260px;background:radial-gradient(circle at 35% 30%,#581024,transparent 70%);opacity:.7"></i>
+  <div class="wrap">
+    <p class="statement" id="statement">Nos especializamos en tratar uñas con <span class="hl" data-hl>onicofagia</span></p>
+  </div>
+</section>
+
+<!-- OFICIO -->
+<section class="ink grain pad" id="oficio" style="background:linear-gradient(180deg,var(--night),#240c15 55%,var(--night))">
+  <i class="ring" data-par=".12" style="width:300px;height:300px;right:-90px;top:12%;color:rgba(134,40,61,.55)"></i>
+  <div class="wrap">
+    <h2 class="rv" style="max-width:14ch">Sanar también se ve en tus manos</h2>
+    <p class="sub rv" style="--d:120ms">Si te muerdes las uñas y te da vergüenza mostrar tus manos, sé cómo se siente. LÜA nació desde mis propias inseguridades, para acompañar a quienes, como yo, buscan sanar desde el autocuidado. Con técnicas seguras, arte y empatía, te ayudo a transformar tus manos y cómo te sientes con vos. <strong style="font-weight:500;color:var(--camel)">Andy Villarroel</strong></p>
+    <div class="craft-grid">
+      <figure class="tile arc rv"><img src="@i_brush@" alt="Pincel aplicando gel sobre una uña natural" data-img-par=".1" loading="lazy" width="1000" height="1250"><figcaption>Técnicas seguras</figcaption></figure>
+      <figure class="tile rv col2" style="--d:140ms"><img src="@i_tools@" alt="Instrumental de acero para manicura sobre fondo oscuro" data-img-par=".1" loading="lazy" width="1000" height="1250"><figcaption>Arte y empatía</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS -->
+<section class="paper pad" id="resultados">
+  <i class="orb" data-par="-.08" style="width:480px;height:480px;right:-160px;bottom:6%;background:radial-gradient(circle at 35% 30%,rgba(179,143,111,.35),transparent 70%)"></i>
+  <div class="wrap">
+    <h2 class="rv" style="max-width:13ch">Manos que ya no se esconden</h2>
+  </div>
+    <div class="res" id="res">
+      <figure class="tile arc"><img src="@i_nude@" alt="Manos con uñas en tono nude, largas y almendradas" loading="lazy" width="1000" height="1250"></figure>
+      <figure class="tile"><img src="@i_rose@" alt="Manos con uñas en tono rosado, brillo suave" loading="lazy" width="1000" height="1250"></figure>
+      <figure class="tile arc"><img src="@i_statue@" alt="Estatua de mármol con las uñas pintadas en vino" loading="lazy" width="1000" height="1250"></figure>
+    </div>
+  <div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section class="pricing" id="precios">
+  <div class="bg" data-par="-.06"></div><div class="shade"></div>
+  <i class="orb" data-orb data-par="-.25" style="width:420px;height:420px;left:6%;top:18%;background:radial-gradient(circle at 35% 30%,#b38f6f,transparent 68%);opacity:.55"></i>
+  <i class="orb" data-orb data-par=".2" style="width:520px;height:520px;right:2%;top:36%;background:radial-gradient(circle at 35% 30%,#86283d,transparent 68%);opacity:.8"></i>
+  <div class="wrap head">
+    <h2 class="rv" style="max-width:10ch">Elige cómo empezar</h2>
+    <div class="arrows">
+      <button class="arrow glass" id="prev" aria-label="Anterior"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-6 6 6 6"/></svg></button>
+      <button class="arrow glass" id="next" aria-label="Siguiente"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+  <div class="track" id="track" tabindex="0" aria-label="Servicios y precios">
+    <article class="card glass" data-card>
+      <div class="in"><div><h3>Pintado en gel</h3><p>Color sobre tu uña natural.</p></div>
+      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/pintado?duration=120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>70</b></a></li><li><a href="https://cal.com/lua.nails/pintado?duration=180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>80</b></a></li><li><a href="https://cal.com/lua.nails/pintado?duration=240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>90</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/pintado" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
+    </article>
+    <article class="card glass" data-card>
+      <div class="in"><div><h3>Soft gel</h3><p>Uñas diseñadas para proteger mientras sanas el hábito.</p></div>
+      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/softgel?duration=120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>100</b></a></li><li><a href="https://cal.com/lua.nails/softgel?duration=180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>120</b></a></li><li><a href="https://cal.com/lua.nails/softgel?duration=240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>140</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/softgel" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
+    </article>
+    <article class="card glass" data-card>
+      <div class="in"><div><h3>Reconstrucción con gel</h3><p>Reconstruimos lo que el hábito dañó.</p></div>
+      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/reconstruccion?duration=120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>100</b></a></li><li><a href="https://cal.com/lua.nails/reconstruccion?duration=180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>120</b></a></li><li><a href="https://cal.com/lua.nails/reconstruccion?duration=240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>150</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/reconstruccion" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
+    </article>
+    <article class="card glass" data-card>
+      <div class="in"><div><h3>Relleno</h3><p>De soft gel o de reconstrucción.</p></div>
+      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion?duration=120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>80</b></a></li><li><a href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion?duration=180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>100</b></a></li><li><a href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion?duration=240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>120</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
+    </article>
+  </div>
+  <p class="wrap hold">Precios en bolivianos. Si tu sesión incluye un retiro, reserva más tiempo.</p>
+  <div class="prog" aria-hidden="true"><i id="prog"></i></div>
+</section>
+
+<!-- FAQ -->
+<section class="paper pad" id="preguntas">
+  <i class="orb" data-par="-.08" style="width:420px;height:420px;right:-140px;top:8%;background:radial-gradient(circle at 35% 30%,rgba(88,16,36,.18),transparent 70%)"></i>
+  <div class="wrap faq-grid">
+    <h2 class="rv">Es tu lugar seguro</h2>
+    <div class="faq">
+      <details class="rv"><summary><span>¿Qué es la onicofagia?</span></summary><p>Es el hábito compulsivo de morderse las uñas, muchas veces de forma inconsciente, hasta causar daño visible en las manos.</p></details>
+      <details class="rv" style="--d:80ms"><summary><span>¿Qué lo causa?</span></summary><p>La onicofagia suele estar relacionada con la ansiedad, el estrés, el aburrimiento o la necesidad de calmarse en momentos de tensión emocional.</p></details>
+      <details class="rv" style="--d:160ms"><summary><span>¿Cómo puedo tratarlo?</span></summary><p>Con uñas diseñadas para proteger mientras sanas el hábito. En LÜA cuidamos tus manos sin juicio.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="paper pad blog" id="blog">
+  <div class="wrap">
+    <div class="blog-head"><h2 class="rv">Aprende a cuidar tus manos</h2><a class="all rv" href="/blog/">Ver todos los artículos</a></div>
+    <div class="posts"><a class="post rv" style="--d:0ms" href="/blog/onicofagia-por-que-me-como-las-unas/" data-post="onicofagia-por-que-me-como-las-unas"><small>Entender</small><h3>Por qué me como las uñas</h3><p>Lo que hay detrás de la onicofagia y por qué el hábito se repite sin que lo notes.</p><span class="more">Leer artículo</span></a><a class="post rv" style="--d:80ms" href="/blog/como-dejar-de-comerte-las-unas/" data-post="como-dejar-de-comerte-las-unas"><small>Practicar</small><h3>Cómo dejar de comerte las uñas</h3><p>Siete pasos concretos para soltar el hábito sin pelearte contigo.</p><span class="more">Leer artículo</span></a><a class="post rv" style="--d:160ms" href="/blog/primera-sesion-pintado-soft-gel-reconstruccion/" data-post="primera-sesion-pintado-soft-gel-reconstruccion"><small>Reservar</small><h3>Tu primera sesión en LÜA</h3><p>Cómo elegir entre pintado, soft gel y reconstrucción con gel.</p><span class="more">Leer artículo</span></a></div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="wine grain final" id="reservar" data-spot>
+  <div class="spot"></div>
+  <div class="photo"><img src="@i_torn@" alt="" aria-hidden="true" loading="lazy" data-img-par=".1"></div>
+  <i class="orb" data-par="-.12" style="width:520px;height:520px;left:-120px;top:-160px;background:radial-gradient(circle at 35% 30%,rgba(179,143,111,.45),transparent 70%)"></i>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="big eyes" data-eyes data-track aria-hidden="true"><i class="eye"></i><i class="eye"></i></div>
+    <h2 class="rv">Tus uñas ya pueden <em>sonreír</em></h2>
+    <p class="lead rv" style="--d:120ms">Reserva tu lugar y empieza hoy.</p>
+    <div class="cta-row rv" style="--d:220ms">
+      <a class="btn cta" href="@BOOK@" target="_blank" rel="noopener" data-cta>Agenda tu sesión <span class="eyes" aria-hidden="true"><i class="eye"></i><i class="eye"></i></span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot grain">
+  <i class="orb" style="width:420px;height:420px;right:-120px;top:-160px;background:radial-gradient(circle at 35% 30%,rgba(134,40,61,.5),transparent 70%)"></i>
+  <div class="wrap">
+    <div class="foot-top">
+      <img class="foot-logo" src="@i_logo@" alt="LÜA by Andy Villarroel" width="320" height="143">
+      <p class="foot-tag">Sanar también se ve en tus manos</p>
+    </div>
+    <div class="foot-grid">
+      <div><h4>Ubicación</h4><p>Av. Papapulo, Edificio Torre Isos, Depto 7C<br>Cochabamba, Bolivia</p></div>
+      <div><h4>Horarios</h4><p>De 9:00 a 17:00</p></div>
+      <div><h4>Blog</h4><p><a href="/blog/">Artículos sobre onicofagia</a></p></div>
+    </div>
+    <p class="foot-end">© 2026 LÜA by Andy Villarroel</p>
+  </div>
+</footer>
+<div class="trail" id="trail"></div>
+
+<script>
+(function(){
+"use strict";
+/* ---- CONFIG: edita aquí ---- */
+var BOOKING_URL="@BOOK@";
+/* ---------------------------- */
+var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return[].slice.call((r||document).querySelectorAll(s))};
+var clamp=function(v,a,b){return Math.min(b,Math.max(a,v))};
+$$("a[data-cta]:not([data-event])").forEach(function(a){a.href="#precios";a.removeAttribute("target");a.removeAttribute("rel")});
+$$("a.brand").forEach(function(a){a.href="#top";a.removeAttribute("target");a.removeAttribute("rel")});
+
+/* reveal: contenido visible por defecto, se arma antes de pintar */
+var rvs=$$(".rv,.in");
+if(!reduce&&"IntersectionObserver"in window){
+  rvs.forEach(function(e){e.classList.add("is-armed")});
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("is-seen");io.unobserve(en.target)}})},{threshold:.08,rootMargin:"0px 0px 4% 0px"});
+  rvs.forEach(function(e){io.observe(e)});
+}
+
+/* acentos: la demo de Quincy no los trae, se dibujan sobre la letra base */
+/* ---- OJOS: parpadeo, guiño repentino, seguimiento ---- */
+var eyes=$$(".eyes");
+function rnd(a,b){return a+Math.random()*(b-a)}
+function schedule(el,first){
+  setTimeout(function(){
+    if(!document.hidden){
+      var wink=Math.random()<.8||first;
+      var cls=wink?"is-wink":"is-blink";
+      el.classList.add(cls);
+      setTimeout(function(){el.classList.remove(cls)},wink?480:170);
+    }
+    schedule(el,false);
+  },first?rnd(1500,2400):rnd(3000,5200));
+}
+eyes.forEach(function(el,i){schedule(el,i===0||el.classList.contains("big"))});
+var trackEyes=$$("[data-track]");
+function look(x,y){
+  trackEyes.forEach(function(el){
+    var r=el.getBoundingClientRect();if(r.bottom<-200||r.top>innerHeight+200)return;
+    var cx=r.left+r.width/2,cy=r.top+r.height/2,dx=x-cx,dy=y-cy,d=Math.hypot(dx,dy)||1,m=Math.min(1,d/260)*(parseFloat(getComputedStyle(el).getPropertyValue("--s"))*.28);
+    el.style.setProperty("--ex",(dx/d*m).toFixed(2)+"px");el.style.setProperty("--ey",(dy/d*m).toFixed(2)+"px");
+  });
+}
+/* sonrisa: ojos que se cierran como una sonrisa al acercarse a Agenda tu sesión */
+var smileT;
+function smile(on,hold){clearTimeout(smileT);if(on){document.body.classList.add("is-smile")}else{smileT=setTimeout(function(){document.body.classList.remove("is-smile")},hold||0)}}
+$$("[data-cta]").forEach(function(b){
+  b.addEventListener("pointerenter",function(){smile(true)});
+  b.addEventListener("pointerleave",function(e){smile(false,e.pointerType==="mouse"?120:0)});
+  b.addEventListener("focus",function(){smile(true)});b.addEventListener("blur",function(){smile(false)});
+  b.addEventListener("pointerdown",function(){smile(true)});
+  b.addEventListener("pointerup",function(e){if(e.pointerType!=="mouse")smile(false,1100)});
+  b.addEventListener("pointercancel",function(){smile(false,300)});
+});
+
+/* ---- Foco de luz y estela que siguen puntero o dedo ---- */
+var trail=$("#trail"),trailT;
+var spots=$$("[data-spot]");
+function pointer(e){
+  look(e.clientX,e.clientY);
+  if(reduce)return;
+  spots.forEach(function(s){var r=s.getBoundingClientRect();if(e.clientY>=r.top&&e.clientY<=r.bottom){var sp=s.querySelector(".spot");sp.style.setProperty("--sx",(e.clientX-r.left)+"px");sp.style.setProperty("--sy",(e.clientY-r.top)+"px");sp.style.setProperty("--so",1)}else{s.querySelector(".spot").style.setProperty("--so",0)}});
+  if(e.pointerType==="touch"||e.pointerType==="pen"){trail.style.opacity=1;trail.style.transform="translate("+e.clientX+"px,"+e.clientY+"px)";clearTimeout(trailT);trailT=setTimeout(function(){trail.style.opacity=0},500)}
+}
+addEventListener("pointermove",pointer,{passive:true});
+addEventListener("pointerdown",function(e){if(e.pointerType==="touch")pointer(e)},{passive:true});
+
+/* ---- Cristal líquido: el brillo especular sigue el puntero ---- */
+$$(".glass").forEach(function(g){
+  g.addEventListener("pointermove",function(e){var r=g.getBoundingClientRect();g.style.setProperty("--mx",(e.clientX-r.left)+"px");g.style.setProperty("--my",(e.clientY-r.top)+"px");g.style.setProperty("--hl",1);
+    if(g.hasAttribute("data-card")){var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;var inn=g.firstElementChild;inn.style.setProperty("--tx",(x*9).toFixed(2)+"deg");inn.style.setProperty("--ty",(-y*9).toFixed(2)+"deg")}});
+  g.addEventListener("pointerleave",function(){g.style.removeProperty("--hl");if(g.hasAttribute("data-card")){g.firstElementChild.style.setProperty("--tx","0deg");g.firstElementChild.style.setProperty("--ty","0deg")}});
+});
+
+/* ---- Carrusel de precios ---- */
+var track=$("#track"),cards=$$("[data-card]"),prog=$("#prog"),prev=$("#prev"),next=$("#next");
+function cardStep(){var a=cards[0].getBoundingClientRect(),b=cards[1].getBoundingClientRect();return b.left-a.left}
+prev.addEventListener("click",function(){track.scrollBy({left:-cardStep(),behavior:reduce?"auto":"smooth"})});
+next.addEventListener("click",function(){track.scrollBy({left:cardStep(),behavior:reduce?"auto":"smooth"})});
+track.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){e.preventDefault();next.click()}if(e.key==="ArrowLeft"){e.preventDefault();prev.click()}});
+/* arrastre con mouse + inercia */
+var drag=null,vel=0,lastX=0,lastT=0,raf2;
+track.addEventListener("pointerdown",function(e){if(e.pointerType!=="mouse"||e.target.closest("a"))return;drag={x:e.clientX,s:track.scrollLeft};lastX=e.clientX;lastT=performance.now();vel=0;cancelAnimationFrame(raf2);track.classList.add("is-drag");track.setPointerCapture(e.pointerId)});
+track.addEventListener("pointermove",function(e){if(!drag)return;track.scrollLeft=drag.s-(e.clientX-drag.x);var t=performance.now();vel=(e.clientX-lastX)/Math.max(1,t-lastT);lastX=e.clientX;lastT=t});
+function endDrag(){if(!drag)return;drag=null;var v=vel*-1;var target=track.scrollLeft+v*420;/* proyección del impulso */
+  var best=null,bd=1e9,c=track.getBoundingClientRect(),mid=c.left+c.width/2,base=track.scrollLeft;
+  cards.forEach(function(k){var r=k.getBoundingClientRect(),ctr=base+(r.left+r.width/2-mid);var d=Math.abs(ctr-target);if(d<bd){bd=d;best=ctr}});
+  track.classList.remove("is-drag");track.scrollTo({left:best,behavior:"smooth"})}
+track.addEventListener("pointerup",endDrag);track.addEventListener("pointercancel",endDrag);
+
+/* ---- Resultados: avanza solo y se detiene cuando haces scroll o lo tocas ---- */
+(function(){
+  var res=$("#res");if(!res||reduce)return;
+  var tiles=$$(".tile",res),idx=0,inView=false,lastScroll=0,hold=0;
+  new IntersectionObserver(function(es){inView=es[0].isIntersecting},{threshold:.4}).observe(res);
+  addEventListener("scroll",function(){lastScroll=Date.now()},{passive:true});
+  ["pointerdown","touchstart","wheel","keydown"].forEach(function(ev){res.addEventListener(ev,function(){hold=Date.now()+6000},{passive:true})});
+  function go(i){var t=tiles[i],r=t.getBoundingClientRect(),c=res.getBoundingClientRect();res.scrollTo({left:res.scrollLeft+(r.left+r.width/2-(c.left+c.width/2)),behavior:"smooth"})}
+  setInterval(function(){
+    var now=Date.now();if(!inView||now<hold||now-lastScroll<1200||document.hidden)return;
+    idx=(idx+1)%tiles.length;go(idx);
+  },3200);
+  res.addEventListener("scroll",function(){var c=res.getBoundingClientRect(),m=c.left+c.width/2,b=0,bd=1e9;tiles.forEach(function(t,i){var r=t.getBoundingClientRect(),d=Math.abs(r.left+r.width/2-m);if(d<bd){bd=d;b=i}});idx=b},{passive:true});
+})();
+
+/* ---- Hero 3D: la estatua se inclina con el scroll y con el puntero o el dedo ---- */
+var hero=$("#hero"),statue=$(".statue",hero),copy=$(".copy",hero),hx=0,hy=0;
+if(!reduce){
+  addEventListener("pointermove",function(e){hx=e.clientX/innerWidth-.5;hy=e.clientY/innerHeight-.5;req()},{passive:true});
+  addEventListener("deviceorientation",function(e){if(e.gamma==null)return;hx=clamp(e.gamma/40,-.5,.5);hy=clamp((e.beta-50)/80,-.5,.5);req()},{passive:true});
+}
+function hero3d(){
+  if(reduce)return;var y=scrollY;if(y>vh*1.3)return;var p=clamp(y/vh,0,1);
+  statue.style.setProperty("--rx",(p*14-hy*5).toFixed(2)+"deg");
+  statue.style.setProperty("--ry",(-hx*9-p*5).toFixed(2)+"deg");
+  statue.style.setProperty("--tx",(hx*-18).toFixed(1)+"px");
+  statue.style.setProperty("--ty",(p*90).toFixed(1)+"px");
+  copy.style.setProperty("--cy",(-p*40).toFixed(1)+"px");
+}
+/* ---- Scroll que sigue el dedo: todo en un solo rAF ---- */
+var vh=innerHeight;addEventListener("resize",function(){vh=innerHeight});
+var pars=$$("[data-par]"),imgs=$$("[data-img-par]"),scrubs=$$("[data-scrub]"),list=$("[data-scrub-list]");
+var words=[];
+(function(){var s=$("#statement");var out=[];s.childNodes.forEach(function(n){if(n.nodeType===3){n.textContent.trim().split(/\s+/).forEach(function(w){if(!w)return;var sp=document.createElement("span");sp.textContent=w;out.push(sp)})}else out.push(n)});
+ s.textContent="";out.forEach(function(n){s.appendChild(n);s.appendChild(document.createTextNode(" "))});words=$$("span",s)})();
+function accents(){
+  var map={"á":["a","a"],"é":["e","a"],"í":["i","a"],"ó":["o","a"],"ú":["u","a"],"Á":["A","a",1],"É":["E","a",1],"Í":["I","a",1],"Ó":["O","a",1],"Ú":["U","a",1],"ñ":["n","t"],"Ñ":["N","t",1],"¿":["?","inv"],"¡":["!","inv"]};
+  var re=/[áéíóúÁÉÍÓÚñÑ¿¡]/;
+  $$("h1,h2,h3,summary,.lead,.closer,.sub,.statement>span").forEach(function(root){
+    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[],n;
+    while(n=w.nextNode())if(re.test(n.nodeValue))nodes.push(n);
+    nodes.forEach(function(n){
+      var f=document.createDocumentFragment();
+      n.nodeValue.split(/(\s+)/).forEach(function(word){
+        if(!word)return;
+        if(!re.test(word)){f.appendChild(document.createTextNode(word));return}
+        var wrap=document.createElement("span");wrap.className="nb";
+        word.split(/([áéíóúÁÉÍÓÚñÑ¿¡])/).forEach(function(p){
+          if(!p)return;var m=map[p];
+          if(m&&p.length===1){var s=document.createElement("span");s.textContent=m[0];
+            if(m[1]==="inv"){s.className="inv";s.setAttribute("aria-hidden","true")}
+            else{s.className="ac ac-"+m[1]+(m[2]?" ac-cap":"");s.setAttribute("aria-hidden","true");
+              if(p==="í"){s.textContent="";var c=document.createElement("span");c.className="cut";c.textContent="i";s.appendChild(c)}}
+            var o=document.createElement("span");o.className="sr";o.textContent=p;
+            wrap.appendChild(o);wrap.appendChild(s)}
+          else wrap.appendChild(document.createTextNode(p))
+        });
+        f.appendChild(wrap)
+      });
+      n.parentNode.replaceChild(f,n)
+    });
+  });
+}
+
+accents();
+var navEl=$("#nav"),lastY=scrollY,ticking=false;
+function frame(){
+  ticking=false;var y=scrollY;
+  
+  if(!reduce){
+    pars.forEach(function(e){var r=e.parentElement.getBoundingClientRect();if(r.bottom<-300||r.top>vh+300)return;var k=parseFloat(e.dataset.par);e.style.transform="translate3d(0,"+((r.top+r.height/2-vh/2)*k).toFixed(1)+"px,0)"});
+    imgs.forEach(function(e){var box=e.parentElement.getBoundingClientRect();if(box.bottom<0||box.top>vh)return;var k=parseFloat(e.dataset.imgPar),p=(box.top+box.height/2-vh/2)/vh;e.style.transform="translate3d(0,"+(-clamp(p,-1,1)*k*box.height*.5-box.height*.04).toFixed(1)+"px,0) scale(1.02)"});
+    scrubs.forEach(function(e){var r=e.getBoundingClientRect();e.style.setProperty("--p",clamp((vh*.95-r.top)/(vh*.55),0,1).toFixed(3))});
+    if(list)$$("li",list).forEach(function(li){var r=li.getBoundingClientRect();li.style.setProperty("--p",clamp((vh*.98-r.top)/(vh*.38),0,1).toFixed(3))});
+    var sr=$("#statement").getBoundingClientRect(),sp=clamp((vh*.85-sr.top)/(sr.height+vh*.35),0,1);
+    words.forEach(function(w,i){w.style.setProperty("--w",clamp(sp*(words.length+3)-i,0,1).toFixed(3))});
+  }
+  hero3d();
+  /* tarjetas: distancia al centro */
+  var c=track.getBoundingClientRect(),mid=c.left+c.width/2;
+  cards.forEach(function(k){var r=k.getBoundingClientRect();k.style.setProperty("--d",clamp((r.left+r.width/2-mid)/(c.width*.62),-1.4,1.4).toFixed(3))});
+  var mx=track.scrollWidth-track.clientWidth;prog.style.setProperty("--pr",(mx>0?.2+.8*track.scrollLeft/mx:1).toFixed(3));
+  prev.disabled=track.scrollLeft<4;next.disabled=track.scrollLeft>mx-4;
+}
+function req(){if(!ticking){ticking=true;requestAnimationFrame(frame)}}
+addEventListener("scroll",req,{passive:true});track.addEventListener("scroll",req,{passive:true});addEventListener("resize",req);
+if(reduce){$$(".statement span").forEach(function(w){w.style.setProperty("--w",1)})}
+frame();setTimeout(frame,400);
+})();
+
+/* ---- TRACKING DE LA LANDING (Meta Pixel + CAPI) ---- */
+(function(){
+  if(!window.LUA)return;
+  var SVC={"pintado":"Pintado en gel","softgel":"Soft gel","reconstruccion":"Reconstrucción con gel","cita-de-relleno-de-sofgel-o-reconstruccion":"Relleno"};
+  var seen={};
+  /* ViewContent al llegar a precios, una sola vez */
+  var pr=document.getElementById("precios");
+  if(pr&&"IntersectionObserver"in window){
+    var vio=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&!seen.vc){seen.vc=1;LUA.track("ViewContent",{content_name:"Precios",content_category:"Servicios"},{server:true});vio.disconnect()}
+    })},{threshold:.35});vio.observe(pr);
+  }
+  /* clic en un precio: InitiateCheckout con valor, y el enlace viaja con fbp, fbc y codigo de anuncio */
+  document.addEventListener("click",function(ev){
+    var a=ev.target.closest&&ev.target.closest("a[data-event]");
+    if(a){
+      var slug=(a.href.split("cal.com/lua.nails/")[1]||"").split("?")[0];
+      var val=parseFloat((a.querySelector("b")||{}).textContent)||0;
+      var eid=LUA.uid();
+      LUA.track("InitiateCheckout",{content_name:SVC[slug]||slug,content_category:"Servicios",content_ids:[slug],value:val,currency:"BOB"},{id:eid,server:true});
+      a.href=LUA.tag(a.href,eid);
+      return;
+    }
+    var c=ev.target.closest&&ev.target.closest("a[data-cta]:not([data-event])");
+    if(c)LUA.track("AgendaCTA",{location:(c.closest("section,nav,div.dock")||{}).id||"pagina"},{custom:true});
+    var p=ev.target.closest&&ev.target.closest("a[data-post]");
+    if(p)LUA.track("BlogClick",{post:p.getAttribute("data-post")},{custom:true});
+  },true);
+  /* profundidad de scroll */
+  var marks=[50,90];
+  addEventListener("scroll",function(){
+    var h=document.documentElement,pct=(h.scrollTop+innerHeight)/h.scrollHeight*100;
+    marks=marks.filter(function(m){if(pct>=m){LUA.track("Scroll"+m,{},{custom:true});return false}return true});
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
