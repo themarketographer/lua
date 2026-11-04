@@ -12,8 +12,11 @@ PIXEL="1559106775456296"
 import base64,io
 from PIL import Image
 def img(p,w=1000,q=72):
-    im=Image.open('images/'+p).convert('RGB');im.thumbnail((w,w*2));bb=io.BytesIO();im.save(bb,'JPEG',quality=q,optimize=True,progressive=True)
-    return 'data:image/jpeg;base64,'+base64.b64encode(bb.getvalue()).decode()
+    # WebP externo en /assets/img/ (cacheable y sin duplicar la misma foto en el HTML)
+    im=Image.open('images/'+p).convert('RGB');im.thumbnail((w,w*2))
+    os.makedirs(ROOT+'assets/img',exist_ok=True);n=os.path.splitext(p)[0]+'.webp'
+    im.save(ROOT+'assets/img/'+n,'WEBP',quality=q,method=6)
+    return '/assets/img/'+n
 def font(p): return 'data:font/otf;base64,'+base64.b64encode(open('fonts/'+p,'rb').read()).decode()
 def png(p): return 'data:image/png;base64,'+base64.b64encode(open(ROOT+'assets/'+p,'rb').read()).decode()
 m={'i_statue':img('statue-red-nails.jpg'),'i_bitten':img('bitten-dark.jpg',900),'i_brush':img('gel-brush.jpg'),'i_tools':img('tools-steel.jpg'),'i_nude':img('nails-nude.jpg'),'i_rose':img('nails-rose.jpg'),'i_torn':img('torn-paper-hands.jpg',1400,65),
