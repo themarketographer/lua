@@ -85,12 +85,6 @@ os.makedirs(ROOT+'meta-ads-fotografos',exist_ok=True)
 open(ROOT+'meta-ads-fotografos/index.html','w').write(noidx(ads))
 
 # 3b) /gracias-cita/: a donde manda Cal.com despues de reservar. Mide Purchase y Contact, y abre WhatsApp.
-GR='''<main style="text-align:center"><div class="kicker">Cita agendada</div><h1>¡Listo! Tu cita quedó agendada</h1>
-<p class="lede" id="resumen">Recibirás la confirmación en tu correo.</p>
-<p>Escríbenos por WhatsApp para confirmar tu lugar. Si tienes una inspiración de diseño, mándala por ahí.</p>
-<p style="margin:28px 0 10px"><a class="btn" id="wa" href="#">Confirmar por WhatsApp</a></p>
-<p class="meta" id="cd"></p>
-<p class="meta">Si necesitas mover tu cita, usa el enlace del correo de confirmación.</p></main>'''
 GRJS='''document.addEventListener("DOMContentLoaded",function(){
 var q=new URLSearchParams(location.search),PR=%s,NM=%s;
 var slug=q.get("eventTypeSlug")||"",start=q.get("startTime")||"",end=q.get("endTime")||"";
@@ -111,7 +105,35 @@ cd.textContent="Te llevamos a WhatsApp en unos segundos…";
 timer=setTimeout(function(){contact();location.href=a.href},4000);
 });'''%(json.dumps(PRICES),json.dumps(NAMES,ensure_ascii=False))
 os.makedirs(ROOT+'gracias-cita',exist_ok=True)
-open(ROOT+'gracias-cita/index.html','w').write(noidx(page('¡Cita agendada! | LÜA','Tu cita quedó agendada. Confirma por WhatsApp.',SITE+'/gracias-cita/',GR,'',GRJS,"website")))
+# la pagina de gracias reusa la cabecera (CSS, fuentes, pixel), el nav y el footer de la landing
+head=t[:t.index('<body>')]
+head=re.sub(r'<script type="application/ld\+json">.*?</script>\n?','',head,flags=re.S)
+head=head.replace('<title>LÜA · Uñas con onicofagia en Cochabamba</title>','<title>¡Cita agendada! | LÜA</title>')
+head=head.replace('<link rel="canonical" href="https://studiolua.netlify.app/">','<link rel="canonical" href="https://studiolua.netlify.app/gracias-cita/">')
+nav=t[t.index('<nav class="top glass"'):t.index('</nav>')+6].replace('href="#top"','href="/"').replace('href="#precios" data-cta>Agenda tu sesión','href="/">Volver al inicio')
+foot=t[t.index('<footer class="foot'):t.index('</footer>')+9]
+GR=f'''<body>
+{nav}
+<main id="top">
+<section class="wine grain final" data-spot>
+  <div class="spot"></div>
+  <div class="photo"><img src="/assets/img/torn-paper-hands.webp" alt="" aria-hidden="true" width="1400" height="933"></div>
+  <i class="orb" style="width:520px;height:520px;left:-120px;top:-160px;background:radial-gradient(circle at 35% 30%,rgba(179,143,111,.45),transparent 70%)"></i>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="big eyes" aria-hidden="true"><i class="eye"></i><i class="eye"></i></div>
+    <h1>Tu cita quedó <em>agendada</em></h1>
+    <p class="lead" id="resumen">Recibirás la confirmación en tu correo.</p>
+    <div class="cta-row"><a class="btn" id="wa" href="#">Confirmar por WhatsApp <span class="eyes" aria-hidden="true"><i class="eye"></i><i class="eye"></i></span></a></div>
+    <p id="cd" style="margin-top:22px;font-size:16px;opacity:.7"></p>
+    <p style="margin-top:10px;font-size:16px;opacity:.6">Si necesitas mover tu cita, usa el enlace del correo de confirmación.</p>
+  </div>
+</section>
+</main>
+{foot}
+<script>{GRJS}</script>
+</body></html>'''
+os.makedirs(ROOT+'gracias-cita',exist_ok=True)
+open(ROOT+'gracias-cita/index.html','w').write(noidx(head+GR))
 
 # 3c) /privacidad/ (Meta lo exige si hay Pixel)
 PV='''<main><div class="kicker">Legal</div><h1>Política de privacidad</h1><div class="meta">Última actualización: 10 de noviembre de 2026</div>
