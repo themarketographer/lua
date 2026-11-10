@@ -759,7 +759,7 @@ frame();setTimeout(frame,400);
       LUA.track("InitiateCheckout",{content_name:SVC[slug]||slug,content_category:"Servicios",content_ids:[slug],value:val,currency:"BOB"},{id:eid,server:true});
       a.href=LUA.tag(a.href,eid);
       if(window.LUA_MODE==="wa")a.href=LUA.wa(a.getAttribute("data-wa")||"Hola, quiero reservar una cita");
-      /* camino sin Cal (/meta-ads-fotografos/): el clic a WhatsApp es el Lead */
+      /* camino sin Cal (/ads/): el clic a WhatsApp es el Lead */
       if(window.LUA_MODE==="wa"){LUA.track("Lead",{content_name:SVC[slug]||slug,content_category:"Servicios",content_ids:[slug],value:val,currency:"BOB"},{id:eid+"-lead",server:true});LUA.track("Contact",{content_name:SVC[slug]||slug},{id:eid+"-ct",server:true})}
       return;
     }
