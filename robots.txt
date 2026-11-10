@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /.netlify/
 Disallow: /gracias-cita
-Disallow: /meta-ads-fotografos
+Disallow: /ads
 
 User-agent: GPTBot
 Allow: /

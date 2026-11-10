@@ -72,7 +72,7 @@ NAMES={"pintado":"Pintado en gel","softgel":"Soft gel","reconstruccion":"Reconst
 PRICES={"pintado":{120:70,180:80,240:90},"softgel":{120:100,180:120,240:140},"reconstruccion":{120:100,180:120,240:150},"cita-de-relleno-de-sofgel-o-reconstruccion":{120:80,180:100,240:120}}
 def noidx(h): return h.replace('<meta charset="utf-8">','<meta charset="utf-8"><meta name="robots" content="noindex,nofollow">',1)
 
-# 3a) /meta-ads-fotografos/: misma landing, pero los precios abren WhatsApp (sin Cal) y miden Lead + Contact
+# 3a) /ads/: misma landing, pero los precios abren WhatsApp (sin Cal) y miden Lead + Contact
 def to_wa(m):
     slug,dur=m.group(3),m.group(5)
     txt=f"Hola, quiero reservar mi cita de {NAMES[slug]}"+(f" ({int(dur)//60} h)" if dur else "")
@@ -81,8 +81,8 @@ def to_wa(m):
 ads=re.sub(r'<a (class="btn cta" )?href="(https://cal\.com/lua\.nails/([a-z\-]+))(\?duration=(\d+))?" data-svc="[a-z\-]+" data-min="(\d+)"',to_wa,t)
 ads=ads.replace('<script>/* LÜA tracking base','<script>window.LUA_MODE="wa";</script><script>/* LÜA tracking base',1)
 assert 'LUA_MODE="wa"' in ads and 'cal.com/lua.nails/pintado' not in ads, 'camino WhatsApp mal generado'
-os.makedirs(ROOT+'meta-ads-fotografos',exist_ok=True)
-open(ROOT+'meta-ads-fotografos/index.html','w').write(noidx(ads))
+os.makedirs(ROOT+'ads',exist_ok=True)
+open(ROOT+'ads/index.html','w').write(noidx(ads))
 
 # 3b) /gracias-cita/: a donde manda Cal.com despues de reservar. Mide Purchase y Contact, y abre WhatsApp.
 GRJS='''document.addEventListener("DOMContentLoaded",function(){
@@ -150,7 +150,7 @@ open(ROOT+'privacidad/index.html','w').write(page('Política de privacidad | LÜ
 urls=[SITE+'/',SITE+'/blog/']+[f"{SITE}/blog/{p['slug']}/" for p in POSTS]+[SITE+'/privacidad/']
 open(ROOT+'sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'<url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>\n' for u in urls)+'</urlset>\n')
 bots=''.join(f'User-agent: {b}\nAllow: /\n\n' for b in ['GPTBot','ChatGPT-User','OAI-SearchBot','ClaudeBot','Claude-Web','PerplexityBot','Google-Extended','Applebot-Extended'])
-open(ROOT+'robots.txt','w').write(f'User-agent: *\nAllow: /\nDisallow: /.netlify/\nDisallow: /gracias-cita\nDisallow: /meta-ads-fotografos\n\n{bots}Sitemap: {SITE}/sitemap.xml\n')
+open(ROOT+'robots.txt','w').write(f'User-agent: *\nAllow: /\nDisallow: /.netlify/\nDisallow: /gracias-cita\nDisallow: /ads\n\n{bots}Sitemap: {SITE}/sitemap.xml\n')
 posts_md=''.join(f"  - [{p['title']}]({SITE}/blog/{p['slug']}/): {p['desc']}\n" for p in POSTS)
 open(ROOT+'llms.txt','w').write(f"""# LÜA by Andy Villarroel
 
