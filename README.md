@@ -22,7 +22,7 @@ Sitio: https://studiolua.netlify.app
 
 ## Eventos que se miden
 
-Pixel `1559106775456296`, con el mismo `event_id` en navegador y servidor para que Meta deduplique.
+Pixel `1559106775456296`. **Todos** los eventos salen por el navegador y por el servidor (`capi.js`) con el mismo `event_id`, para que Meta deduplique. Para que un evento nuevo viaje por servidor, agrégalo a `ALLOWED` en `netlify/functions/capi.js`. `Schedule` sale solo por servidor (webhook de Cal.com).
 
 ### Flujo A: landing → Cal.com → gracias → WhatsApp
 

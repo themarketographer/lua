@@ -32,14 +32,14 @@
   }
 
   fbq("init",PIXEL_ID);
-  fbq("track","PageView");
 
   /* --- envio de eventos: navegador (Pixel) + servidor (CAPI) con el mismo event_id --- */
   function track(name,params,opts){
     opts=opts||{};
     var id=opts.id||uid();
     try{fbq(opts.custom?"trackCustom":"track",name,params||{},{eventID:id})}catch(e){}
-    if(opts.server){
+    /* todo evento va también por servidor (CAPI), con el mismo event_id. Para no enviarlo: {server:false} */
+    if(opts.server!==false){
       try{
         var body=JSON.stringify({
           event_name:name,event_id:id,event_source_url:location.href,
@@ -74,5 +74,6 @@
     return "https://api.whatsapp.com/send?phone="+WA_NUMBER+"&text="+encodeURIComponent((text+(ad?" ("+ad+")":"")).trim());
   }
 
+  track("PageView");
   w.LUA={track:track,tag:tag,uid:uid,wa:wa,store:store,ck:ck,WA_CONFIRM:WA_CONFIRM,PIXEL_ID:PIXEL_ID};
 })(window,document);

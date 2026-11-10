@@ -2,7 +2,13 @@
 // con el mismo event_id que el Pixel, para que Meta los deduplique.
 const { sendToMeta } = require("./_meta");
 
-const ALLOWED = new Set(["ViewContent", "InitiateCheckout", "Lead", "Contact", "Purchase", "ConfirmoPorWhatsApp"]);
+const ALLOWED = new Set([
+  // estandar
+  "PageView", "ViewContent", "InitiateCheckout", "Lead", "Contact", "Purchase",
+  // personalizados
+  "ConfirmoPorWhatsApp", "AgendaCTA", "Scroll50", "Scroll90",
+  "BlogView", "BlogScroll50", "BlogScroll90", "BlogClick", "LlegoDesdeBlog",
+]);
 const SITE = process.env.SITE_URL || "https://studiolua.netlify.app";
 
 exports.handler = async (event) => {
@@ -22,6 +28,7 @@ exports.handler = async (event) => {
     content_name: String(cd.content_name || "").slice(0, 120),
     content_category: String(cd.content_category || "").slice(0, 60),
   };
+  for (const k of ["post", "from", "location"]) if (cd[k]) custom[k] = String(cd[k]).slice(0, 80);
   if (Array.isArray(cd.content_ids)) custom.content_ids = cd.content_ids.slice(0, 5).map(String);
   if (typeof cd.value === "number" && cd.value >= 0 && cd.value < 100000) {
     custom.value = cd.value;
