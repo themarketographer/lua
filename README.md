@@ -24,18 +24,30 @@ Sitio: https://studiolua.netlify.app
 
 Pixel `1559106775456296`, con el mismo `event_id` en navegador y servidor para que Meta deduplique.
 
-| Evento | Cuándo | Origen |
+### Flujo A: landing → Cal.com → gracias → WhatsApp
+
+| Paso | Evento | Cuándo | Origen |
+|---|---|---|---|
+| Llega | `PageView` | Cada página | Navegador |
+| Ve precios | `ViewContent` | Llega a la sección de precios (y al abrir un artículo) | Navegador y servidor |
+| Pregunta antes de reservar | `Contact` | Toca el botón de WhatsApp del header o de la barra de abajo | Navegador y servidor |
+| Elige servicio | `InitiateCheckout` | Toca un precio (valor en BOB); sale hacia Cal.com | Navegador y servidor |
+| Reserva confirmada | `Schedule` | Cal.com confirma (webhook, valor según servicio y duración). Fuente de verdad | Servidor |
+| Gracias | `Purchase` | Carga `/gracias-cita/` (monto reservado, no cobrado) | Navegador y servidor |
+| Confirma por WhatsApp | `ConfirmoPorWhatsApp` (personalizado) | Toca o se abre WhatsApp desde la página de gracias | Navegador y servidor |
+
+### Flujo B: `/ads/` → WhatsApp directo (sin Cal)
+
+| Paso | Evento | Cuándo |
 |---|---|---|
-| `PageView` | Cada página | Navegador |
-| `ViewContent` | Al llegar a precios, y al abrir un artículo | Navegador y servidor |
-| `InitiateCheckout` | Clic en un precio (valor en BOB, nombre del servicio) | Navegador y servidor |
-| `Schedule` | Reserva confirmada en Cal.com (valor según servicio y duración) | Servidor |
-| `Purchase` | Llegada a `gracias-cita` tras reservar (valor en BOB) | Navegador y servidor |
-| `Contact` | Toque o redirección a WhatsApp desde la página de gracias | Navegador y servidor |
-| `Lead` | Solo en `/ads/`: clic a WhatsApp desde un precio | Navegador y servidor |
-| `BlogView`, `BlogScroll50`, `BlogScroll90`, `BlogClick` | Lectura y clics dentro del blog (con el post) | Navegador (personalizados) |
-| `LlegoDesdeBlog` | La landing se abre desde un artículo; el post viaja hasta Cal.com y vuelve en `Schedule` como `blog_post` | Navegador (personalizado) |
-| `AgendaCTA`, `BlogClick`, `Scroll50`, `Scroll90` | Interacciones | Navegador (personalizados) |
+| Llega y ve precios | `PageView`, `ViewContent` | Igual que A |
+| Consulta general | `Contact` | Botón de WhatsApp del header o la barra |
+| Quiere un servicio | `InitiateCheckout` + `Lead` | Toca un precio; se abre WhatsApp con ese servicio. **`Lead` es el evento para optimizar** |
+
+### Interacciones (personalizados, navegador)
+`AgendaCTA`, `Scroll50`, `Scroll90`, `BlogClick`, `BlogView`, `BlogScroll50`, `BlogScroll90`, `LlegoDesdeBlog` (el post viaja hasta Cal.com y vuelve en `Schedule` como `blog_post`).
+
+Optimiza la campaña por un solo evento: `Lead` (flujo B) o `Schedule` (flujo A, cuando haya unas 50 reservas por semana).
 
 Código de anuncio: si el enlace del anuncio trae `utm_content=A1`, ese código viaja hasta Cal.com y vuelve en el evento `Schedule` como `ad_code`. Parámetros de URL recomendados en cada anuncio:
 

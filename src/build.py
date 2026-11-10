@@ -146,7 +146,8 @@ var r=document.getElementById("resumen");
 if(start){try{r.textContent=name+" · "+new Date(start).toLocaleString("es-BO",{timeZone:"America/La_Paz",dateStyle:"full",timeStyle:"short"})}catch(e){}}
 var a=document.getElementById("wa"),cd=document.getElementById("cd"),sent=0,timer;
 a.href=LUA.wa(LUA.WA_CONFIRM);
-function contact(){if(!sent){sent=1;LUA.track("Contact",{content_name:name,content_category:"Servicios"},{id:eid+"-ct",server:true})}}
+/* evento personalizado: ya reservó, así que no es un Contact (consulta) sino la confirmación por WhatsApp */
+function contact(){if(!sent){sent=1;LUA.track("ConfirmoPorWhatsApp",{content_name:name,content_category:"Servicios",value:val,currency:"BOB"},{id:eid+"-wa",custom:true,server:true})}}
 a.addEventListener("click",function(){clearTimeout(timer);cd.textContent="";contact()});
 /* sin startTime = alguien entro directo, no una reserva: no se mide ni se redirige */
 if(!start)return;

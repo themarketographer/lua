@@ -2,7 +2,7 @@
 // con el mismo event_id que el Pixel, para que Meta los deduplique.
 const { sendToMeta } = require("./_meta");
 
-const ALLOWED = new Set(["ViewContent", "InitiateCheckout", "Lead", "Contact", "Purchase"]);
+const ALLOWED = new Set(["ViewContent", "InitiateCheckout", "Lead", "Contact", "Purchase", "ConfirmoPorWhatsApp"]);
 const SITE = process.env.SITE_URL || "https://studiolua.netlify.app";
 
 exports.handler = async (event) => {
