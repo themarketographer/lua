@@ -135,6 +135,27 @@ GR=f'''<body>
 os.makedirs(ROOT+'gracias-cita',exist_ok=True)
 open(ROOT+'gracias-cita/index.html','w').write(noidx(head+GR))
 
+# 3b2) 404.html: Netlify la sirve sola cuando una ruta no existe. Rutas absolutas porque se muestra en cualquier URL.
+h404=head.replace('<title>¡Cita agendada! | LÜA</title>','<title>Página no encontrada | LÜA</title>').replace('/gracias-cita/">','/">')
+NF=f'''<body>
+{nav}
+<main id="top">
+<section class="wine grain final" data-spot>
+  <div class="spot"></div>
+  <div class="photo"><img src="/assets/img/torn-paper-hands.webp" alt="" aria-hidden="true" width="1400" height="933"></div>
+  <i class="orb" style="width:520px;height:520px;left:-120px;top:-160px;background:radial-gradient(circle at 35% 30%,rgba(179,143,111,.45),transparent 70%)"></i>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="big eyes" aria-hidden="true"><i class="eye"></i><i class="eye"></i></div>
+    <h1>Esta página <em>no existe</em></h1>
+    <p class="lead">Pero tus uñas sí pueden tener arreglo.</p>
+    <div class="cta-row"><a class="btn" href="/">Volver al inicio <span class="eyes" aria-hidden="true"><i class="eye"></i><i class="eye"></i></span></a><a class="btn btn--ghost" href="/blog/">Leer el blog</a></div>
+  </div>
+</section>
+</main>
+{foot}
+</body></html>'''
+open(ROOT+'404.html','w').write(noidx(h404+NF))
+
 # 3c) /privacidad/ (Meta lo exige si hay Pixel)
 PV='''<main><div class="kicker">Legal</div><h1>Política de privacidad</h1><div class="meta">Última actualización: 10 de noviembre de 2026</div>
 <p>Este sitio es de LÜA by Andy Villarroel, Av. Papapulo, Edificio Torre Isos, Depto 7C, Cochabamba, Bolivia.</p>
