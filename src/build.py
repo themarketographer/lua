@@ -126,7 +126,7 @@ def noidx(h): return h.replace('<meta charset="utf-8">','<meta charset="utf-8"><
 # 3a) /ads/: misma landing, pero los precios abren WhatsApp (sin Cal) y miden Lead + Contact
 def to_wa(m):
     slug,dur=m.group(3),m.group(5)
-    txt=f"Hola, quiero reservar mi cita de {NAMES[slug]}"+(f" ({int(dur)//60} h)" if dur else "")
+    txt=f"Wuolaa, quiero reservar mi cita de {NAMES[slug]}"+(f" ({int(dur)//60} h)" if dur else "")+" wuuu"
     url=f"https://api.whatsapp.com/send?phone={WA_NUM}&text="+urllib.parse.quote(txt)
     return f'<a {m.group(1) or ""}href="{url}" data-wa="{html.escape(txt)}" data-svc="{slug}" data-min="{m.group(6)}"'
 ads=re.sub(r'<a (class="btn cta" )?href="(https://cal\.com/lua\.nails/([a-z\-]+))(\?duration=(\d+))?" data-svc="[a-z\-]+" data-min="(\d+)"',to_wa,t)
