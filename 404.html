@@ -363,7 +363,7 @@ em .ac::after{transform:translateX(-50%) skewX(-12deg)}
         var v=store("lua_"+k);if(v&&!u.searchParams.get(k))u.searchParams.set(k,v);
       });
       if(!u.searchParams.get("utm_source"))u.searchParams.set("utm_source","landing");
-      var meta={eid:eid,fbp:ck("_fbp"),fbc:ck("_fbc"),ad:store("lua_utm_content"),src:location.pathname};
+      var meta={eid:eid,fbp:ck("_fbp"),fbc:ck("_fbc"),ad:store("lua_utm_content"),src:location.pathname,blog:store("lua_blog")};
       Object.keys(meta).forEach(function(k){if(meta[k])u.searchParams.set("metadata["+k+"]",meta[k])});
       return u.toString();
     }catch(e){return href}

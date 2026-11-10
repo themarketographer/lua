@@ -33,6 +33,8 @@ Pixel `1559106775456296`, con el mismo `event_id` en navegador y servidor para q
 | `Purchase` | Llegada a `gracias-cita` tras reservar (valor en BOB) | Navegador y servidor |
 | `Contact` | Toque o redirección a WhatsApp desde la página de gracias | Navegador y servidor |
 | `Lead` | Solo en `/ads/`: clic a WhatsApp desde un precio | Navegador y servidor |
+| `BlogView`, `BlogScroll50`, `BlogScroll90`, `BlogClick` | Lectura y clics dentro del blog (con el post) | Navegador (personalizados) |
+| `LlegoDesdeBlog` | La landing se abre desde un artículo; el post viaja hasta Cal.com y vuelve en `Schedule` como `blog_post` | Navegador (personalizado) |
 | `AgendaCTA`, `BlogClick`, `Scroll50`, `Scroll90` | Interacciones | Navegador (personalizados) |
 
 Código de anuncio: si el enlace del anuncio trae `utm_content=A1`, ese código viaja hasta Cal.com y vuelve en el evento `Schedule` como `ad_code`. Parámetros de URL recomendados en cada anuncio:

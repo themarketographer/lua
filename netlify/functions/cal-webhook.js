@@ -70,6 +70,7 @@ exports.handler = async (event) => {
       currency: "BOB",
       ...(value ? { value } : {}),
       ...(meta.ad ? { ad_code: meta.ad } : {}),
+      ...(meta.blog ? { blog_post: String(meta.blog).slice(0, 80) } : {}),
     },
   };
   Object.keys(ev.user_data).forEach((k) => ev.user_data[k] === undefined && delete ev.user_data[k]);

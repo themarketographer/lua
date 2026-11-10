@@ -299,7 +299,7 @@ em .ac::after{transform:translateX(-50%) skewX(-12deg)}
 <meta property="og:url" content="https://studiolua.netlify.app/"><meta property="og:image" content="https://studiolua.netlify.app/assets/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "HealthAndBeautyBusiness", "@id": "https://studiolua.netlify.app/#negocio", "name": "LÜA by Andy Villarroel", "description": "Estudio de uñas especializado en onicofagia en Cochabamba, Bolivia.", "url": "https://studiolua.netlify.app/", "image": "https://studiolua.netlify.app/assets/og.jpg", "priceRange": "Bs 70 a Bs 150", "address": {"@type": "PostalAddress", "streetAddress": "Av. Papapulo, Edificio Torre Isos, Depto 7C", "addressLocality": "Cochabamba", "addressCountry": "BO"}, "founder": {"@type": "Person", "name": "Andy Villarroel"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué es la onicofagia?", "acceptedAnswer": {"@type": "Answer", "text": "Es el hábito compulsivo de morderse las uñas, muchas veces de forma inconsciente, hasta causar daño visible en las manos."}}, {"@type": "Question", "name": "¿Qué lo causa?", "acceptedAnswer": {"@type": "Answer", "text": "La onicofagia suele estar relacionada con la ansiedad, el estrés, el aburrimiento o la necesidad de calmarse en momentos de tensión emocional."}}, {"@type": "Question", "name": "¿Cómo puedo tratarlo?", "acceptedAnswer": {"@type": "Answer", "text": "Con uñas diseñadas para proteger mientras sanas el hábito. En LÜA cuidamos tus manos sin juicio."}}]}]</script>
+<script type="application/ld+json">@ld_home@</script>
 <script>@pixel_js@</script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1559106775456296&ev=PageView&noscript=1"></noscript>
 </head>
@@ -430,9 +430,7 @@ em .ac::after{transform:translateX(-50%) skewX(-12deg)}
   <div class="wrap faq-grid">
     <h2 class="rv">Es tu lugar seguro</h2>
     <div class="faq">
-      <details class="rv"><summary><span>¿Qué es la onicofagia?</span></summary><p>Es el hábito compulsivo de morderse las uñas, muchas veces de forma inconsciente, hasta causar daño visible en las manos.</p></details>
-      <details class="rv" style="--d:80ms"><summary><span>¿Qué lo causa?</span></summary><p>La onicofagia suele estar relacionada con la ansiedad, el estrés, el aburrimiento o la necesidad de calmarse en momentos de tensión emocional.</p></details>
-      <details class="rv" style="--d:160ms"><summary><span>¿Cómo puedo tratarlo?</span></summary><p>Con uñas diseñadas para proteger mientras sanas el hábito. En LÜA cuidamos tus manos sin juicio.</p></details>
+@faq_html@
     </div>
   </div>
 </section>
@@ -664,6 +662,9 @@ frame();setTimeout(frame,400);
   if(!window.LUA)return;
   var SVC={"pintado":"Pintado en gel","softgel":"Soft gel","reconstruccion":"Reconstrucción con gel","cita-de-relleno-de-sofgel-o-reconstruccion":"Relleno"};
   var seen={};
+  /* llegó desde un artículo del blog (referrer interno), una sola vez por visita */
+  try{var rf=new URL(document.referrer);if(rf.hostname===location.hostname&&rf.pathname.indexOf("/blog/")===0&&rf.pathname.length>6){
+    var bs=rf.pathname.split("/")[2];LUA.store("lua_blog",bs);LUA.track("LlegoDesdeBlog",{post:bs},{custom:true})}}catch(e){}
   /* ViewContent al llegar a precios, una sola vez */
   var pr=document.getElementById("precios");
   if(pr&&"IntersectionObserver"in window){
