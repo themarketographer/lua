@@ -1,8 +1,8 @@
-// Recibe eventos del navegador (ViewContent, InitiateCheckout) y los reenvia a Meta
+// Recibe eventos del navegador (ViewContent, InitiateCheckout, Lead, Contact, Purchase) y los reenvia a Meta
 // con el mismo event_id que el Pixel, para que Meta los deduplique.
 const { sendToMeta } = require("./_meta");
 
-const ALLOWED = new Set(["ViewContent", "InitiateCheckout"]);
+const ALLOWED = new Set(["ViewContent", "InitiateCheckout", "Lead", "Contact", "Purchase"]);
 const SITE = process.env.SITE_URL || "https://studiolua.netlify.app";
 
 exports.handler = async (event) => {

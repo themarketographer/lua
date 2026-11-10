@@ -4,6 +4,8 @@
   var PIXEL_ID="1559106775456296";
   var CAPI_ENDPOINT="/.netlify/functions/capi";
   var CAL_HOST="cal.com";
+  var WA_NUMBER="59178109113";
+  var WA_CONFIRM="Wuolaa, acabo de agendarte una cita wuuu";
 
   /* --- snippet oficial de Meta --- */
   if(!w.fbq){
@@ -15,7 +17,9 @@
 
   function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,10)}
   function ck(k){var m=d.cookie.match(new RegExp("(?:^|; )"+k+"=([^;]*)"));return m?decodeURIComponent(m[1]):""}
-  function store(k,v){try{if(v!=null)sessionStorage.setItem(k,v);return sessionStorage.getItem(k)||""}catch(e){return v||""}}
+  /* localStorage (no sessionStorage): Cal.com abre en otra pestaña y el código de anuncio tiene que sobrevivir hasta la página de gracias.
+     shortcut: la atribución dura hasta que llegue un anuncio nuevo; si molesta, guardar con fecha y vencer a los 7 días. */
+  function store(k,v){try{if(v!=null)localStorage.setItem(k,v);return localStorage.getItem(k)||""}catch(e){return v||""}}
 
   /* --- parametros de campaña y fbclid (se conserva toda la sesion) --- */
   var qs=new URLSearchParams(location.search);
@@ -64,5 +68,11 @@
     }catch(e){return href}
   }
 
-  w.LUA={track:track,tag:tag,uid:uid,PIXEL_ID:PIXEL_ID};
+  /* --- enlace a WhatsApp con el codigo de anuncio al final del mensaje: "(A1)" --- */
+  function wa(text){
+    var ad=(store("lua_utm_content").match(/\bA\d{1,3}\b/)||[])[0];
+    return "https://api.whatsapp.com/send?phone="+WA_NUMBER+"&text="+encodeURIComponent((text+(ad?" ("+ad+")":"")).trim());
+  }
+
+  w.LUA={track:track,tag:tag,uid:uid,wa:wa,store:store,ck:ck,WA_CONFIRM:WA_CONFIRM,PIXEL_ID:PIXEL_ID};
 })(window,document);

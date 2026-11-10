@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>¡Cita agendada! | LÜA</title><meta name="description" content="Tu cita quedó agendada. Confirma por WhatsApp.">
+<link rel="canonical" href="https://studiolua.netlify.app/gracias-cita/"><meta name="theme-color" content="#150a0d">
+<meta property="og:type" content="website"><meta property="og:locale" content="es_BO"><meta property="og:site_name" content="LÜA by Andy Villarroel">
+<meta property="og:title" content="¡Cita agendada! | LÜA"><meta property="og:description" content="Tu cita quedó agendada. Confirma por WhatsApp."><meta property="og:url" content="https://studiolua.netlify.app/gracias-cita/">
+<meta property="og:image" content="https://studiolua.netlify.app/assets/og.jpg"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/blog.css">
+
+<script src="/assets/pixel.js"></script>
+<script>document.addEventListener("DOMContentLoaded",function(){
+var q=new URLSearchParams(location.search),PR={"pintado": {"120": 70, "180": 80, "240": 90}, "softgel": {"120": 100, "180": 120, "240": 140}, "reconstruccion": {"120": 100, "180": 120, "240": 150}, "cita-de-relleno-de-sofgel-o-reconstruccion": {"120": 80, "180": 100, "240": 120}},NM={"pintado": "Pintado en gel", "softgel": "Soft gel", "reconstruccion": "Reconstrucción con gel", "cita-de-relleno-de-sofgel-o-reconstruccion": "Relleno"};
+var slug=q.get("eventTypeSlug")||"",start=q.get("startTime")||"",end=q.get("endTime")||"";
+var mins=start&&end?Math.round((new Date(end)-new Date(start))/60000):0;
+var val=(PR[slug]||{})[mins]||0,name=NM[slug]||q.get("title")||"tu cita";
+var eid=q.get("metadata[eid]")||LUA.uid();
+var r=document.getElementById("resumen");
+if(start){try{r.textContent=name+" · "+new Date(start).toLocaleString("es-BO",{timeZone:"America/La_Paz",dateStyle:"full",timeStyle:"short"})}catch(e){}}
+var a=document.getElementById("wa"),cd=document.getElementById("cd"),sent=0,timer;
+a.href=LUA.wa(LUA.WA_CONFIRM);
+function contact(){if(!sent){sent=1;LUA.track("Contact",{content_name:name,content_category:"Servicios"},{id:eid+"-ct",server:true})}}
+a.addEventListener("click",function(){clearTimeout(timer);cd.textContent="";contact()});
+/* sin startTime = alguien entro directo, no una reserva: no se mide ni se redirige */
+if(!start)return;
+var key="lua_pur_"+slug+start; /* evita contar de nuevo si recarga la pagina */
+if(!LUA.store(key)){LUA.store(key,"1");LUA.track("Purchase",{content_name:name,content_category:"Servicios",content_ids:[slug],value:val,currency:"BOB"},{id:eid+"-pur",server:true})}
+cd.textContent="Te llevamos a WhatsApp en unos segundos…";
+timer=setTimeout(function(){contact();location.href=a.href},4000);
+});</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1559106775456296&ev=PageView&noscript=1"></noscript>
+</head><body>
+<header class="top"><a href="/"><img src="/assets/logo.png" alt="LÜA by Andy Villarroel" width="110" height="38"></a><a class="cta" href="/#precios">Agenda tu sesión</a></header>
+<main style="text-align:center"><div class="kicker">Cita agendada</div><h1>¡Listo! Tu cita quedó agendada</h1>
+<p class="lede" id="resumen">Recibirás la confirmación en tu correo.</p>
+<p>Escríbenos por WhatsApp para confirmar tu lugar. Si tienes una inspiración de diseño, mándala por ahí.</p>
+<p style="margin:28px 0 10px"><a class="btn" id="wa" href="#">Confirmar por WhatsApp</a></p>
+<p class="meta" id="cd"></p>
+<p class="meta">Si necesitas mover tu cita, usa el enlace del correo de confirmación.</p></main><footer>© 2026 LÜA by Andy Villarroel · Av. Papapulo, Edificio Torre Isos, Depto 7C, Cochabamba · De 9:00 a 17:00<br><a href="/privacidad/">Privacidad</a><br><br>Este contenido es informativo. Si tienes dolor, enrojecimiento, hinchazón o pus alrededor de la uña, consulta con un profesional de salud.</footer></body></html>
