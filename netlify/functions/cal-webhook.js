@@ -18,11 +18,15 @@ const NAMES = {
 };
 
 function validSignature(raw, header) {
-  const secret = process.env.CAL_WEBHOOK_SECRET;
-  if (!secret) return false;
+  // trim: un espacio o salto de linea al pegar el secreto en Netlify rompe la firma sin avisar
+  const secret = (process.env.CAL_WEBHOOK_SECRET || "").trim();
+  if (!secret) { console.error("401: CAL_WEBHOOK_SECRET no existe para las funciones (revisa el alcance 'Functions' y redeploy)"); return false; }
+  if (!header) { console.error("401: la peticion no trae x-cal-signature-256 (¿el webhook de Cal tiene el Secret?)"); return false; }
   const expected = crypto.createHmac("sha256", secret).update(raw).digest("hex");
-  const a = Buffer.from(expected), b = Buffer.from(String(header || ""));
-  return a.length === b.length && crypto.timingSafeEqual(a, b);
+  const a = Buffer.from(expected), b = Buffer.from(String(header).trim().toLowerCase());
+  const ok = a.length === b.length && crypto.timingSafeEqual(a, b);
+  if (!ok) console.error("401: la firma no coincide, el secreto de Netlify y el de Cal.com son distintos");
+  return ok;
 }
 
 exports.handler = async (event) => {
