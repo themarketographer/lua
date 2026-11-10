@@ -10,6 +10,10 @@ Sitio: https://studiolua.netlify.app
 |---|---|
 | `index.html` | Landing completa en un solo archivo (fuentes e imágenes embebidas) |
 | `blog/` | Índice del blog y 3 artículos |
+| `gracias-cita/` | Página a la que Cal.com manda tras reservar: mide `Purchase` y `Contact`, y abre WhatsApp con "Wuolaa, acabo de agendarte una cita wuuu" |
+| `meta-ads-fotografos/` | Misma landing pero los precios abren WhatsApp (sin Cal): mide `InitiateCheckout`, `Lead` y `Contact`. noindex |
+| `privacidad/` | Política de privacidad (exigida por Meta) |
+| `llms.txt`, `ai.txt`, `robots.txt`, `sitemap.xml` | SEO y GEO (robots abre los rastreadores de IA y cierra las páginas de gracias y la de anuncios) |
 | `assets/` | Favicon, imagen para redes (`og.jpg`), `pixel.js`, estilos del blog |
 | `netlify/functions/capi.js` | Reenvía a Meta los eventos del navegador (API de conversiones) |
 | `netlify/functions/cal-webhook.js` | Recibe las reservas de Cal.com y envía `Schedule` a Meta |
@@ -26,6 +30,9 @@ Pixel `1559106775456296`, con el mismo `event_id` en navegador y servidor para q
 | `ViewContent` | Al llegar a precios, y al abrir un artículo | Navegador y servidor |
 | `InitiateCheckout` | Clic en un precio (valor en BOB, nombre del servicio) | Navegador y servidor |
 | `Schedule` | Reserva confirmada en Cal.com (valor según servicio y duración) | Servidor |
+| `Purchase` | Llegada a `gracias-cita` tras reservar (valor en BOB) | Navegador y servidor |
+| `Contact` | Toque o redirección a WhatsApp desde la página de gracias | Navegador y servidor |
+| `Lead` | Solo en `/meta-ads-fotografos/`: clic a WhatsApp desde un precio | Navegador y servidor |
 | `AgendaCTA`, `BlogClick`, `Scroll50`, `Scroll90` | Interacciones | Navegador (personalizados) |
 
 Código de anuncio: si el enlace del anuncio trae `utm_content=A1`, ese código viaja hasta Cal.com y vuelve en el evento `Schedule` como `ad_code`. Parámetros de URL recomendados en cada anuncio:
@@ -33,6 +40,11 @@ Código de anuncio: si el enlace del anuncio trae `utm_content=A1`, ese código 
 ```
 utm_source=meta&utm_medium=paid&utm_campaign={{campaign.name}}&utm_content={{ad.name}}
 ```
+
+## Dos caminos para los anuncios
+
+- **A. Landing principal → Cal.com → `/gracias-cita/` → WhatsApp.** En cada tipo de evento de Cal.com, "Redirigir al reservar" debe apuntar a `https://studiolua.netlify.app/gracias-cita/` (con "reenviar parámetros" activo). Hacerlo solo después de publicar esta rama.
+- **B. `/meta-ads-fotografos/` → WhatsApp directo.** Para probar el pixel sin depender de Cal. El mensaje termina con el código del anuncio, por ejemplo `(A1)`.
 
 ## Puesta en marcha
 
@@ -68,7 +80,7 @@ pip install pillow
 python3 src/build.py
 ```
 
-Los precios y los enlaces de Cal.com están en `src/tpl.html` (tarjetas de precios) y en `netlify/functions/cal-webhook.js` (tabla `PRICES`). Si cambias un precio, cámbialo en los dos lugares.
+Los precios y los enlaces de Cal.com están en `src/tpl.html` (tarjetas de precios) y en `netlify/functions/cal-webhook.js` (tabla `PRICES`) y en `src/build.py` (tabla `PRICES`, para `gracias-cita`). Si cambias un precio, cámbialo en los tres lugares.
 
 ## Pendientes
 

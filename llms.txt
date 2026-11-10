@@ -1,0 +1,19 @@
+# LÜA by Andy Villarroel
+
+> Estudio de uñas en Cochabamba, Bolivia, especializado en onicofagia (el hábito de morderse las uñas). Pintado en gel, soft gel, reconstrucción con gel y relleno, desde Bs 70, con reserva online.
+
+LÜA trabaja uñas mordidas, cortas o dañadas con técnicas seguras que cuidan la uña natural. Atiende Andy Villarroel en Av. Papapulo, Edificio Torre Isos, Depto 7C, Cochabamba, de 9:00 a 17:00.
+
+## Páginas principales
+
+- [Inicio](https://studiolua.netlify.app/): servicios, precios en bolivianos y reserva.
+- [Blog](https://studiolua.netlify.app/blog/): artículos sobre onicofagia y cuidado de las uñas.
+  - [Por qué me como las uñas: lo que hay detrás de la onicofagia](https://studiolua.netlify.app/blog/onicofagia-por-que-me-como-las-unas/): La onicofagia es el hábito compulsivo de morderse las uñas. Descubre qué la dispara, por qué se repite sin que lo notes y qué puedes hacer hoy.
+  - [Cómo dejar de comerte las uñas: siete pasos para esta semana](https://studiolua.netlify.app/blog/como-dejar-de-comerte-las-unas/): Siete pasos concretos para soltar el hábito de morderte las uñas: observar tus señales, cuidar el contorno, ocupar las manos y proteger la uña mientras sanas.
+  - [Tu primera sesión en LÜA: pintado, soft gel o reconstrucción con gel](https://studiolua.netlify.app/blog/primera-sesion-pintado-soft-gel-reconstruccion/): Qué incluye cada servicio de LÜA, cuánto tiempo reservar según el diseño que elijas y cómo preparar tu primera sesión de uñas con onicofagia en Cochabamba.
+- [Privacidad](https://studiolua.netlify.app/privacidad/): qué datos recoge el sitio.
+
+## Contacto
+
+Reservas: https://cal.com/lua.nails
+WhatsApp: https://api.whatsapp.com/send?phone=59178109113

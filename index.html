@@ -306,6 +306,8 @@ em .ac::after{transform:translateX(-50%) skewX(-12deg)}
   var PIXEL_ID="1559106775456296";
   var CAPI_ENDPOINT="/.netlify/functions/capi";
   var CAL_HOST="cal.com";
+  var WA_NUMBER="59178109113";
+  var WA_CONFIRM="Wuolaa, acabo de agendarte una cita wuuu";
 
   /* --- snippet oficial de Meta --- */
   if(!w.fbq){
@@ -317,7 +319,9 @@ em .ac::after{transform:translateX(-50%) skewX(-12deg)}
 
   function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,10)}
   function ck(k){var m=d.cookie.match(new RegExp("(?:^|; )"+k+"=([^;]*)"));return m?decodeURIComponent(m[1]):""}
-  function store(k,v){try{if(v!=null)sessionStorage.setItem(k,v);return sessionStorage.getItem(k)||""}catch(e){return v||""}}
+  /* localStorage (no sessionStorage): Cal.com abre en otra pestaña y el código de anuncio tiene que sobrevivir hasta la página de gracias.
+     shortcut: la atribución dura hasta que llegue un anuncio nuevo; si molesta, guardar con fecha y vencer a los 7 días. */
+  function store(k,v){try{if(v!=null)localStorage.setItem(k,v);return localStorage.getItem(k)||""}catch(e){return v||""}}
 
   /* --- parametros de campaña y fbclid (se conserva toda la sesion) --- */
   var qs=new URLSearchParams(location.search);
@@ -366,7 +370,13 @@ em .ac::after{transform:translateX(-50%) skewX(-12deg)}
     }catch(e){return href}
   }
 
-  w.LUA={track:track,tag:tag,uid:uid,PIXEL_ID:PIXEL_ID};
+  /* --- enlace a WhatsApp con el codigo de anuncio al final del mensaje: "(A1)" --- */
+  function wa(text){
+    var ad=(store("lua_utm_content").match(/\bA\d{1,3}\b/)||[])[0];
+    return "https://api.whatsapp.com/send?phone="+WA_NUMBER+"&text="+encodeURIComponent((text+(ad?" ("+ad+")":"")).trim());
+  }
+
+  w.LUA={track:track,tag:tag,uid:uid,wa:wa,store:store,ck:ck,WA_CONFIRM:WA_CONFIRM,PIXEL_ID:PIXEL_ID};
 })(window,document);
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1559106775456296&ev=PageView&noscript=1"></noscript>
@@ -473,19 +483,19 @@ em .ac::after{transform:translateX(-50%) skewX(-12deg)}
   <div class="track" id="track" tabindex="0" aria-label="Servicios y precios">
     <article class="card glass" data-card>
       <div class="in"><div><h3>Pintado en gel</h3><p>Color sobre tu uña natural.</p></div>
-      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/pintado?duration=120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>70</b></a></li><li><a href="https://cal.com/lua.nails/pintado?duration=180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>80</b></a></li><li><a href="https://cal.com/lua.nails/pintado?duration=240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>90</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/pintado" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
+      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/pintado?duration=120" data-svc="pintado" data-min="120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>70</b></a></li><li><a href="https://cal.com/lua.nails/pintado?duration=180" data-svc="pintado" data-min="180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>80</b></a></li><li><a href="https://cal.com/lua.nails/pintado?duration=240" data-svc="pintado" data-min="240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>90</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/pintado" data-svc="pintado" data-min="120" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
     </article>
     <article class="card glass" data-card>
       <div class="in"><div><h3>Soft gel</h3><p>Uñas diseñadas para proteger mientras sanas el hábito.</p></div>
-      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/softgel?duration=120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>100</b></a></li><li><a href="https://cal.com/lua.nails/softgel?duration=180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>120</b></a></li><li><a href="https://cal.com/lua.nails/softgel?duration=240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>140</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/softgel" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
+      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/softgel?duration=120" data-svc="softgel" data-min="120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>100</b></a></li><li><a href="https://cal.com/lua.nails/softgel?duration=180" data-svc="softgel" data-min="180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>120</b></a></li><li><a href="https://cal.com/lua.nails/softgel?duration=240" data-svc="softgel" data-min="240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>140</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/softgel" data-svc="softgel" data-min="120" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
     </article>
     <article class="card glass" data-card>
       <div class="in"><div><h3>Reconstrucción con gel</h3><p>Reconstruimos lo que el hábito dañó.</p></div>
-      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/reconstruccion?duration=120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>100</b></a></li><li><a href="https://cal.com/lua.nails/reconstruccion?duration=180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>120</b></a></li><li><a href="https://cal.com/lua.nails/reconstruccion?duration=240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>150</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/reconstruccion" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
+      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/reconstruccion?duration=120" data-svc="reconstruccion" data-min="120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>100</b></a></li><li><a href="https://cal.com/lua.nails/reconstruccion?duration=180" data-svc="reconstruccion" data-min="180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>120</b></a></li><li><a href="https://cal.com/lua.nails/reconstruccion?duration=240" data-svc="reconstruccion" data-min="240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>150</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/reconstruccion" data-svc="reconstruccion" data-min="120" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
     </article>
     <article class="card glass" data-card>
       <div class="in"><div><h3>Relleno</h3><p>De soft gel o de reconstrucción.</p></div>
-      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion?duration=120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>80</b></a></li><li><a href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion?duration=180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>100</b></a></li><li><a href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion?duration=240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>120</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
+      <div><ul class="tiers"><li><a href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion?duration=120" data-svc="cita-de-relleno-de-sofgel-o-reconstruccion" data-min="120" target="_blank" rel="noopener" data-event><span>Color entero</span><b>80</b></a></li><li><a href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion?duration=180" data-svc="cita-de-relleno-de-sofgel-o-reconstruccion" data-min="180" target="_blank" rel="noopener" data-event><span>Diseño sencillo</span><b>100</b></a></li><li><a href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion?duration=240" data-svc="cita-de-relleno-de-sofgel-o-reconstruccion" data-min="240" target="_blank" rel="noopener" data-event><span>Diseño complejo</span><b>120</b></a></li></ul><a class="btn cta" href="https://cal.com/lua.nails/cita-de-relleno-de-sofgel-o-reconstruccion" data-svc="cita-de-relleno-de-sofgel-o-reconstruccion" data-min="120" target="_blank" rel="noopener" data-cta data-event>Reservar</a></div></div>
     </article>
   </div>
   <p class="wrap hold">Precios en bolivianos. Si tu sesión incluye un retiro, reserva más tiempo.</p>
@@ -541,7 +551,7 @@ em .ac::after{transform:translateX(-50%) skewX(-12deg)}
       <div><h4>Horarios</h4><p>De 9:00 a 17:00</p></div>
       <div><h4>Blog</h4><p><a href="/blog/">Artículos sobre onicofagia</a></p></div>
     </div>
-    <p class="foot-end">© 2026 LÜA by Andy Villarroel</p>
+    <p class="foot-end">© 2026 LÜA by Andy Villarroel · <a href="/privacidad/">Privacidad</a></p>
   </div>
 </footer>
 <div class="trail" id="trail"></div>
@@ -743,11 +753,14 @@ frame();setTimeout(frame,400);
   document.addEventListener("click",function(ev){
     var a=ev.target.closest&&ev.target.closest("a[data-event]");
     if(a){
-      var slug=(a.href.split("cal.com/lua.nails/")[1]||"").split("?")[0];
+      var slug=a.getAttribute("data-svc")||(a.href.split("cal.com/lua.nails/")[1]||"").split("?")[0];
       var val=parseFloat((a.querySelector("b")||{}).textContent)||0;
       var eid=LUA.uid();
       LUA.track("InitiateCheckout",{content_name:SVC[slug]||slug,content_category:"Servicios",content_ids:[slug],value:val,currency:"BOB"},{id:eid,server:true});
       a.href=LUA.tag(a.href,eid);
+      if(window.LUA_MODE==="wa")a.href=LUA.wa(a.getAttribute("data-wa")||"Hola, quiero reservar una cita");
+      /* camino sin Cal (/meta-ads-fotografos/): el clic a WhatsApp es el Lead */
+      if(window.LUA_MODE==="wa"){LUA.track("Lead",{content_name:SVC[slug]||slug,content_category:"Servicios",content_ids:[slug],value:val,currency:"BOB"},{id:eid+"-lead",server:true});LUA.track("Contact",{content_name:SVC[slug]||slug},{id:eid+"-ct",server:true})}
       return;
     }
     var c=ev.target.closest&&ev.target.closest("a[data-cta]:not([data-event])");
